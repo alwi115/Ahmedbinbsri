@@ -1,483 +1,826 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>أحمد بن بصري | مدرب الذكاء الاصطناعي واللغة الإنجليزية</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy:#071a2d;
+            --navy2:#0b2945;
+            --blue:#3d82b7;
+            --light:#dcecf7;
+            --gold:#e8c69a;
+            --white:#fff;
+            --bg:#f6f9fb;
+            --text:#12263a;
+            --muted:#718294;
+        }
+
+        * {
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html {
+            scroll-behavior:smooth;
+        }
+
+        body {
+            font-family:"Cairo",sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            line-height:1.8;
+        }
+
+        a {
+            text-decoration:none;
+            color:inherit;
+        }
+
+        .container {
+            width:min(1180px,92%);
+            margin:auto;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position:fixed;
+            top:18px;
+            right:50%;
+            transform:translateX(50%);
+            width:min(1180px,92%);
+            z-index:1000;
+
+            background:rgba(255,255,255,.82);
+            backdrop-filter:blur(20px);
+
+            border:1px solid rgba(255,255,255,.7);
+            border-radius:20px;
+
+            box-shadow:0 15px 40px rgba(7,26,45,.08);
+        }
+
+        .nav-inner {
+            height:75px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:0 22px;
+        }
+
+        .logo {
+            font-size:21px;
+            font-weight:900;
+            color:var(--navy);
+        }
+
+        .logo span {
+            color:var(--blue);
+        }
+
+        .links {
+            display:flex;
+            gap:28px;
+            list-style:none;
+        }
+
+        .links a {
+            font-size:14px;
+            font-weight:700;
+            color:#4b6073;
+            transition:.3s;
+        }
+
+        .links a:hover {
+            color:var(--blue);
+        }
+
+        .nav-btn {
+            padding:10px 18px;
+            border-radius:12px;
+            color:#fff !important;
+            background:var(--navy);
+        }
+
+        .menu {
+            display:none;
+            border:0;
+            background:var(--light);
+            color:var(--navy);
+            width:42px;
+            height:42px;
+            border-radius:12px;
+            font-size:21px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height:100vh;
+            padding:160px 0 90px;
+
+            background:
+                radial-gradient(circle at 85% 20%,rgba(141,196,232,.35),transparent 30%),
+                radial-gradient(circle at 10% 90%,rgba(232,198,154,.15),transparent 30%),
+                #f7fafc;
+        }
+
+        .hero-grid {
+            display:grid;
+            grid-template-columns:1.05fr .95fr;
+            align-items:center;
+            gap:70px;
+        }
+
+        .badge {
+            display:inline-block;
+            padding:8px 16px;
+            border-radius:50px;
+            background:#fff;
+            color:var(--blue);
+            font-size:13px;
+            font-weight:800;
+            box-shadow:0 8px 25px rgba(7,26,45,.06);
+        }
+
+        h1 {
+            margin-top:20px;
+            color:var(--navy);
+            font-size:clamp(45px,6vw,76px);
+            line-height:1.15;
+            font-weight:900;
+        }
+
+        h1 span {
+            color:var(--blue);
+        }
+
+        .hero p {
+            margin-top:22px;
+            max-width:600px;
+            color:var(--muted);
+            font-size:17px;
+        }
+
+        .buttons {
+            display:flex;
+            gap:14px;
+            margin-top:30px;
+        }
+
+        .btn {
+            padding:13px 24px;
+            border-radius:13px;
+            font-weight:800;
+            font-size:14px;
+            transition:.3s;
+        }
+
+        .primary {
+            color:#fff;
+            background:linear-gradient(135deg,var(--navy),var(--blue));
+            box-shadow:0 12px 30px rgba(61,130,183,.25);
+        }
+
+        .secondary {
+            color:var(--navy);
+            background:#fff;
+            border:1px solid #e1e8ee;
+        }
+
+        .btn:hover {
+            transform:translateY(-3px);
+        }
+
+        /* IMAGE */
+
+        .visual {
+            position:relative;
+            max-width:440px;
+            margin:auto;
+        }
+
+        .visual::before {
+            content:"";
+            position:absolute;
+            inset:20px -20px -20px 20px;
+            background:var(--light);
+            border-radius:35px;
+            transform:rotate(-5deg);
+        }
+
+        .photo {
+            position:relative;
+            z-index:2;
+            width:100%;
+            aspect-ratio:4/5;
+            border-radius:35px;
+            object-fit:cover;
+            background:linear-gradient(135deg,var(--navy),var(--blue));
+            box-shadow:0 30px 80px rgba(7,26,45,.2);
+        }
+
+        .float {
+            position:absolute;
+            z-index:5;
+            padding:14px 18px;
+            border-radius:17px;
+            background:rgba(255,255,255,.92);
+            backdrop-filter:blur(15px);
+            box-shadow:0 18px 40px rgba(7,26,45,.13);
+        }
+
+        .float strong {
+            display:block;
+            color:var(--navy);
+            font-size:22px;
+        }
+
+        .float small {
+            color:var(--muted);
+        }
+
+        .float.one {
+            left:-30px;
+            bottom:50px;
+        }
+
+        .float.two {
+            right:-30px;
+            top:50px;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding:100px 0;
+        }
+
+        .title {
+            text-align:center;
+            max-width:700px;
+            margin:0 auto 50px;
+        }
+
+        .title span {
+            color:var(--blue);
+            font-size:13px;
+            font-weight:900;
+        }
+
+        .title h2 {
+            color:var(--navy);
+            font-size:clamp(30px,4vw,48px);
+            line-height:1.3;
+        }
+
+        .title p {
+            color:var(--muted);
+            margin-top:12px;
+        }
+
+        /* CHALLENGE */
+
+        .challenge {
+            background:var(--navy);
+            color:#fff;
+        }
+
+        .challenge-box {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:30px;
+        }
+
+        .challenge h2 {
+            font-size:38px;
+        }
+
+        .challenge p {
+            color:rgba(255,255,255,.65);
+        }
+
+        .gold-btn {
+            flex-shrink:0;
+            background:var(--gold);
+            color:var(--navy);
+        }
+
+        /* COURSES */
+
+        .courses {
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:22px;
+        }
+
+        .course {
+            padding:30px;
+            background:#fff;
+            border-radius:23px;
+            border:1px solid #e7edf1;
+            transition:.35s;
+        }
+
+        .course:hover {
+            transform:translateY(-8px);
+            box-shadow:0 20px 50px rgba(7,26,45,.1);
+        }
+
+        .icon {
+            width:50px;
+            height:50px;
+            display:grid;
+            place-items:center;
+            border-radius:14px;
+            background:var(--light);
+            color:var(--blue);
+            font-size:20px;
+        }
+
+        .course h3 {
+            margin-top:20px;
+            color:var(--navy);
+            font-size:19px;
+        }
+
+        .course p {
+            color:var(--muted);
+            font-size:13px;
+            margin-top:8px;
+        }
+
+        .count {
+            display:block;
+            margin-top:20px;
+            color:var(--blue);
+            font-size:12px;
+            font-weight:800;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background:var(--navy);
+            color:#fff;
+        }
+
+        .about-grid {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:70px;
+            align-items:center;
+        }
+
+        .about h2 {
+            font-size:45px;
+        }
+
+        .about p {
+            margin-top:18px;
+            color:rgba(255,255,255,.65);
+        }
+
+        .stats {
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:15px;
+        }
+
+        .stat {
+            padding:28px;
+            border:1px solid rgba(255,255,255,.08);
+            background:rgba(255,255,255,.04);
+            border-radius:20px;
+        }
+
+        .stat strong {
+            color:var(--gold);
+            font-size:35px;
+        }
+
+        .stat small {
+            display:block;
+            color:rgba(255,255,255,.55);
+        }
+
+        /* TESTIMONIALS */
+
+        .reviews {
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:22px;
+        }
+
+        .review {
+            padding:30px;
+            background:#fff;
+            border-radius:22px;
+            box-shadow:0 10px 35px rgba(7,26,45,.05);
+        }
+
+        .review .quote {
+            color:var(--gold);
+            font-size:38px;
+        }
+
+        .review p {
+            color:#586b7c;
+            font-size:14px;
+        }
+
+        .review strong {
+            display:block;
+            margin-top:20px;
+            color:var(--navy);
+        }
+
+        .review small {
+            color:var(--muted);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background:#041321;
+            color:rgba(255,255,255,.6);
+            padding:50px 0 20px;
+            text-align:center;
+        }
+
+        footer strong {
+            color:#fff;
+            font-size:22px;
+        }
+
+        footer p {
+            margin-top:10px;
+            font-size:13px;
+        }
+
+        .copyright {
+            margin-top:30px;
+            padding-top:20px;
+            border-top:1px solid rgba(255,255,255,.08);
+            font-size:11px;
+        }
+
+        @media(max-width:900px) {
+            .links {
+                display:none;
+                position:absolute;
+                top:80px;
+                right:0;
+                left:0;
+                padding:20px;
+                flex-direction:column;
+                background:#fff;
+                border-radius:18px;
+                box-shadow:0 20px 50px rgba(7,26,45,.12);
+            }
+
+            .links.active {
+                display:flex;
+            }
+
+            .menu {
+                display:block;
+            }
+
+            .nav-btn {
+                display:none;
+            }
+
+            .hero-grid,
+            .about-grid {
+                grid-template-columns:1fr;
+                text-align:center;
+            }
+
+            .hero p {
+                margin-left:auto;
+                margin-right:auto;
+            }
+
+            .buttons {
+                justify-content:center;
+            }
+
+            .courses {
+                grid-template-columns:repeat(2,1fr);
+            }
+        }
+
+        @media(max-width:600px) {
+            section {
+                padding:70px 0;
+            }
+
+            .hero {
+                padding-top:130px;
+            }
+
+            .hero h1 {
+                font-size:43px;
+            }
+
+            .buttons {
+                flex-direction:column;
+            }
+
+            .btn {
+                text-align:center;
+            }
+
+            .visual {
+                width:85%;
+            }
+
+            .float.one {
+                left:-10px;
+            }
+
+            .float.two {
+                right:-10px;
+            }
+
+            .challenge-box {
+                flex-direction:column;
+                text-align:center;
+            }
+
+            .courses,
+            .reviews {
+                grid-template-columns:1fr;
+            }
+
+            .about h2 {
+                font-size:34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            أحمد <span>بن بصري</span>
+        </a>
+
+        <ul class="links" id="links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="courses.html">دوراتنا</a></li>
+            <li><a href="story.html">قصتي</a></li>
+            <li><a href="contact.html">تواصل الآن</a></li>
+        </ul>
+
+        <a href="contact.html" class="nav-btn">احجز تدريبًا الآن</a>
+
+        <button class="menu" onclick="toggleMenu()">☰</button>
+    </div>
+</nav>
+
 <main>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="container">
-
-    <span class="eyebrow">
-      INTERNATIONAL AI & ENGLISH TRAINER
-    </span>
-
-    <h1>
-      مرحبًا، أنا أحمد بن بصري
-    </h1>
-
-    <p>
-      تعلمت الإنجليزية في شهرين، وأعمل اليوم مترجمًا ومدربًا
-      في الذكاء الاصطناعي لمساعدة الآخرين على التقدم بسرعة.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="courses.html" class="btn primary">
-        دوراتنا
-      </a>
-
-      <a href="contact.html" class="btn secondary">
-        درّب فريقك
-      </a>
-    </div>
-
-    <div class="stats">
-
-      <div>
-        <strong>+140,000</strong>
-        <span>طالب على Udemy</span>
-      </div>
-
-      <div>
-        <strong>7</strong>
-        <span>منح دراسية ممولة بالكامل</span>
-      </div>
-
-      <div>
-        <strong>+6,000</strong>
-        <span>متعلم في دورات الذكاء الاصطناعي</span>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- 30 DAY CHALLENGE -->
-<section class="challenge">
-
-  <div class="container">
-
-    <span class="eyebrow">
-      30 DAYS ENGLISH CHALLENGE
-    </span>
-
-    <h2>
-      تحدي الثلاثين يوم لاكتساب اللغة الإنجليزية
-    </h2>
-
-    <p>
-      برنامج مكثف يساعدك على بناء عادة يومية لتعلم اللغة
-      الإنجليزية من خلال منهج واضح وتدريبات ومتابعة مستمرة.
-    </p>
-
-    <a href="courses.html" class="btn primary">
-      شارك في التحدي
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- COURSES -->
-<section class="section">
-
-  <div class="container">
-
-    <span class="eyebrow">
-      دورات مميزة
-    </span>
-
-    <h2>
-      تعلم مهارات المستقبل
-    </h2>
-
-    <div class="course-grid">
-
-      <article class="course-card">
-
-        <span>ذكاء اصطناعي</span>
-
-        <h3>
-          كيف أستخدم الذكاء الاصطناعي في حياتي اليومية؟
-        </h3>
-
-        <p>
-          دليلك العملي لاستخدام ChatGPT وأدوات الذكاء الاصطناعي
-          بكفاءة في حياتك اليومية.
-        </p>
-
-        <strong>
-          1,321 طالب
-        </strong>
-
-      </article>
-
-
-      <article class="course-card">
-
-        <span>التميز الأكاديمي</span>
-
-        <h3>
-          الذكاء الاصطناعي للتميز الأكاديمي:
-          كن الأول في جامعتك
-        </h3>
-
-        <p>
-          تعلم كيفية الاستفادة من الذكاء الاصطناعي في
-          العروض التقديمية والأبحاث والتعلم التفاعلي.
-        </p>
-
-        <strong>
-          3,556 طالب
-        </strong>
-
-      </article>
-
-
-      <article class="course-card">
-
-        <span>TOEFL</span>
-
-        <h3>
-          Get 100+ in TOEFL:
-          Prepare Only in 30 Days
-        </h3>
-
-        <p>
-          برنامج متخصص للتحضير لاختبار TOEFL
-          خلال 30 يومًا.
-        </p>
-
-        <strong>
-          23,201 Students
-        </strong>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ABOUT -->
-<section class="about-home">
-
-  <div class="container">
-
-    <span class="eyebrow">
-      قصتي
-    </span>
-
-    <h2>
-      من حضرموت إلى التدريب وصناعة الأثر
-    </h2>
-
-    <p>
-      أحمد بن بصري مترجم محترف ومدرب معتمد في مجال
-      الذكاء الاصطناعي. بدأ رحلته بتعلم اللغة الإنجليزية
-      خلال فترة قصيرة، ثم طور مهاراته حتى أصبح مدربًا
-      وصانع محتوى في مجالات التقنية واللغات.
-    </p>
-
-    <p>
-      ركز في عمله على تبسيط المفاهيم المعقدة وتحويلها
-      إلى مهارات عملية يستطيع الطلاب والمتدربون تطبيقها.
-    </p>
-
-    <a href="story.html">
-      اقرأ قصتي
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- BLOG -->
-<section class="section">
-
-  <div class="container">
-
-    <span class="eyebrow">
-      آخر المقالات
-    </span>
-
-    <h2>
-      من المدوّنة
-    </h2>
-
-    <div class="blog-grid">
-
-      <article>
-        <span>1 يونيو 2025</span>
-
-        <h3>
-          كيف تعلمت الإنجليزية بنفسي مجانًا عبر الإنترنت خلال شهرين؟
-        </h3>
-
-        <p>
-          تجربة التعلم الذاتي والمصادر التي ساعدت على تطوير
-          اللغة الإنجليزية.
-        </p>
-      </article>
-
-
-      <article>
-        <span>12 يونيو 2025</span>
-
-        <h3>
-          كيف تتعلم الإنجليزي بنفسك عبر الإنترنت (مجانًا)
-        </h3>
-
-        <p>
-          مجموعة من الخطوات والمصادر التي تساعدك
-          على تعلم اللغة ذاتيًا.
-        </p>
-      </article>
-
-
-      <article>
-        <span>12 يونيو 2025</span>
-
-        <h3>
-          كيف تم قبولي في 7 منح دراسية ممولة بالكامل؟
-        </h3>
-
-        <p>
-          تجربة أحمد مع التقديم للمنح الدراسية والقبول
-          في سبع منح ممولة بالكامل.
-        </p>
-      </article>
-
-
-      <article>
-        <span>12 يونيو 2025</span>
-
-        <h3>
-          كيفية حل قسم القراءة في اختبار التوفل؟
-        </h3>
-
-        <p>
-          دليل عملي لفهم قسم القراءة والتعامل
-          مع أسئلته بطريقة أكثر كفاءة.
-        </p>
-      </article>
-
-
-      <article>
-
-        <h3>
-          أهم 10 وظائف يستحيل أن يستبدلها الذكاء الاصطناعي
-          في الأعوام القادمة
-        </h3>
-
-      </article>
-
-
-      <article>
-
-        <h3>
-          أفضل أمر لاختيار التخصص باستخدام الذكاء الاصطناعي
-        </h3>
-
-      </article>
-
-
-      <article>
-
-        <h3>
-          أفضل طريقة لتحديد هدف حياتك وتنظيمه
-          باستخدام ChatGPT
-        </h3>
-
-      </article>
-
-
-      <article>
-
-        <h3>
-          هل سيقضي الذكاء الاصطناعي على الوظائف؟
-        </h3>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-
-  <div class="container">
-
-    <span class="eyebrow">
-      آراء المتدربين
-    </span>
-
-    <h2>
-      ماذا يقولون عن أحمد؟
-    </h2>
-
-    <div class="testimonial-grid">
-
-      <article>
-
-        <p>
-          أشاد الدكتور مرشد بطريقة أحمد في تقديم دورة
-          اللغة الإنجليزية للمبتدئين، ووصفها بأنها عملية
-          ومفيدة، مع وضوح وتنظيم في تقديم المعلومة.
-        </p>
-
-        <strong>
-          د. مرشد سالم الجرو
-        </strong>
-
-        <small>
-          نائب رئيس مجلس إدارة مركز النوابغ
-        </small>
-
-      </article>
-
-
-      <article>
-
-        <p>
-          أشاد المهندس عبدالباسط بدورة الذكاء الاصطناعي
-          المقدمة للمعلمين، وبأسلوب أحمد البسيط والسهل
-          في شرح الاستخدامات العملية للذكاء الاصطناعي.
-        </p>
-
-        <strong>
-          م. عبدالباسط بخضر
-        </strong>
-
-        <small>
-          المدير التنفيذي – مؤسسة المنظومة للتنمية
-        </small>
-
-      </article>
-
-
-      <article>
-
-        <p>
-          عبّر الأستاذ علي عن فخره بأحمد وحبه للتعلم
-          ورغبته في مساعدة الآخرين ونقل ما يتعلمه إليهم.
-        </p>
-
-        <strong>
-          الأستاذ علي بصري
-        </strong>
-
-        <small>
-          والد أحمد
-        </small>
-
-      </article>
-
-
-      <article>
-
-        <p>
-          أشار المهندس سالم إلى تفاجئه بقدرة أحمد على
-          العرض والإقناع رغم صغر سنه، واحترام أعضاء هيئة
-          التدريس لكفاءته وتمكنه في الذكاء الاصطناعي.
-        </p>
-
-        <strong>
-          م. سالم عبدالله باعديل
-        </strong>
-
-        <small>
-          ضابط برنامج تطوير تخصص الطاقة الشمسية
-          بكلية المجتمع سيئون – جمعية نبراس للتنمية
-        </small>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- TRAINING -->
-<section class="final-cta">
-
-  <div class="container">
-
-    <span class="eyebrow">
-      Training & Consulting
-    </span>
-
-    <h2>
-      خدمات التدريب والاستشارة
-    </h2>
-
-    <p>
-      احجز استشارة أو تدريبًا مخصصًا لك أو لفريقك
-      في مجال الذكاء الاصطناعي وتطبيقاته العملية.
-    </p>
-
-    <a href="contact.html">
-      احجز تدريبًا الآن
-    </a>
-
-  </div>
-
-</section>
-
-</main>      </p>
-    </div>
-
-    <a href="courses.html" class="btn primary">
-      شارك في التحدي
-    </a>
-
-  </div>
-</section>
-
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="section-title reveal">
-      <span class="eyebrow">الدورات المميزة</span>
-      <h2>تعلم مهارات تصنع فرقًا</h2>
-      <p>
-        محتوى عملي ومبسط في الذكاء الاصطناعي واللغة الإنجليزية.
-      </p>
-    </div>
-
-    <div class="course-grid">
-
-      <article class="course-card reveal">
-        <span class="course-tag">ذكاء اصطناعي</span>
-
-        <h3>
-          كيف أستخدم الذكاء الاصطناعي في حياتي اليومية؟
-        </h3>
-
-        <p>
-          دليلك العملي لاستخدام ChatGPT وأدوات الذكاء الاصطناعي
-          في الدراسة والعمل والحياة اليومية.
-        </p>
-
-        <div class="course-footer">
-          <strong>1,321 طالب</strong>
-          <a href="courses.html">اعرف أكثر ←</a>
+    <div class="container hero-grid">
+
+        <div>
+            <span class="badge">مدرب دولي في الذكاء الاصطناعي واللغة الإنجليزية</span>
+
+            <h1>
+                مرحبًا، أنا
+                <span>أحمد بن بصري</span>
+            </h1>
+
+            <p>
+                تعلمت الإنجليزية في شهرين، وأعمل اليوم مترجمًا ومدربًا
+                في الذكاء الاصطناعي لمساعدة الآخرين على التقدم بسرعة
+                واكتساب المهارات التي يحتاجونها للمستقبل.
+            </p>
+
+            <div class="buttons">
+                <a href="courses.html" class="btn primary">استكشف الدورات</a>
+                <a href="contact.html" class="btn secondary">درّب فريقك</a>
+            </div>
         </div>
-      </article>
 
+        <div class="visual">
+            <!-- ضع صورة أحمد هنا -->
+            <div class="photo"></div>
 
-      <article class="course-card reveal">
-        <span class="course-tag">أكاديمي</span>
+            <div class="float one">
+                <strong>+140K</strong>
+                <small>طالب على Udemy</small>
+            </div>
 
-        <h3>
-          الذكاء الاصطناعي للتميز
+            <div class="float two">
+                <strong>7</strong>
+                <small>منح دراسية ممولة</small>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="challenge">
+    <div class="container challenge-box">
+
+        <div>
+            <h2>تحدي الـ30 يوم</h2>
+            <p>
+                رحلة مكثفة لاكتساب اللغة الإنجليزية خلال 30 يومًا.
+            </p>
+        </div>
+
+        <a href="courses.html" class="btn gold-btn">
+            اكتشف التحدي
+        </a>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="title">
+            <span>الدورات الأكثر تميزًا</span>
+            <h2>تعلم مهارات المستقبل</h2>
+            <p>
+                دورات عملية تساعدك على استخدام الذكاء الاصطناعي
+                وتطوير لغتك ومهاراتك الأكاديمية.
+            </p>
+        </div>
+
+        <div class="courses">
+
+            <div class="course">
+                <div class="icon">AI</div>
+                <h3>كيف أستخدم الذكاء الاصطناعي في حياتي اليومية؟</h3>
+                <p>
+                    تعلم استخدام أدوات الذكاء الاصطناعي بطريقة عملية
+                    في حياتك اليومية.
+                </p>
+                <span class="count">1,321 طالب</span>
+            </div>
+
+            <div class="course">
+                <div class="icon">🎓</div>
+                <h3>الذكاء الاصطناعي للتميز الأكاديمي</h3>
+                <p>
+                    استخدم الذكاء الاصطناعي للدراسة والبحث والعروض
+                    التقديمية والتعلم التفاعلي.
+                </p>
+                <span class="count">3,556 طالب</span>
+            </div>
+
+            <div class="course">
+                <div class="icon">EN</div>
+                <h3>Get 100+ in TOEFL</h3>
+                <p>
+                    خطة مكثفة للاستعداد لاختبار التوفل خلال 30 يومًا.
+                </p>
+                <span class="count">23,201 طالب</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="about">
+    <div class="container about-grid">
+
+        <div>
+            <span style="color:#8dc4e8;font-weight:800;">عن أحمد</span>
+
+            <h2>من طالب يبحث عن فرصة إلى مدرب يساعد الآلاف</h2>
+
+            <p>
+                أحمد بن بصري مترجم محترف ومدرب معتمد في الذكاء الاصطناعي.
+                بدأ رحلته بتعلم الإنجليزية خلال فترة قصيرة، ثم انتقل
+                إلى صناعة المحتوى والتدريب في مجالات اللغة والذكاء الاصطناعي.
+            </p>
+
+            <a href="story.html" class="btn gold-btn" style="display:inline-block;margin-top:25px;">
+                اقرأ قصتي
+            </a>
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong>140K+</strong>
+                <small>طالب على Udemy</small>
+            </div>
+
+            <div class="stat">
+                <strong>7</strong>
+                <small>منح دراسية ممولة بالكامل</small>
+            </div>
+
+            <div class="stat">
+                <strong>6K+</strong>
+                <small>طلاب في دورات الذكاء الاصطناعي</small>
+            </div>
+
+            <div class="stat">
+                <strong>30</strong>
+                <small>يومًا لتحدي اللغة الإنجليزية</small>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="title">
+            <span>آراء المتدربين</span>
+            <h2>تجارب من تعلموا معي</h2>
+        </div>
+
+        <div class="reviews">
+
+            <div class="review">
+                <div class="quote">“</div>
+                <p>
+                    دورة اللغة الإنجليزية كانت عملية ومفيدة جدًا
+                    للمبتدئين، والشرح واضح ومنظم.
+                </p>
+                <strong>د. مرشد سالم الجرو</strong>
+                <small>نائب رئيس مجلس إدارة مركز النوابغ</small>
+            </div>
+
+            <div class="review">
+                <div class="quote">“</div>
+                <p>
+                    دورة الذكاء الاصطناعي للمعلمين كانت بأسلوب بسيط
+                    وسهل مع تطبيقات عملية.
+                </p>
+                <strong>م/ عبدالباسط بخضر</strong>
+                <small>المدير التنفيذي – مؤسسة المنظومة للتنمية</small>
+            </div>
+
+            <div class="review">
+                <div class="quote">“</div>
+                <p>
+                    فخور بحبه للتعلم ورغبته الدائمة في مساعدة الآخرين.
+                </p>
+                <strong>الأستاذ علي بصري</strong>
+                <small>والد أحمد</small>
+            </div>
+
+            <div class="review">
+                <div class="quote">“</div>
+                <p>
+                    مستوى العرض والإقناع والتمكن من الذكاء الاصطناعي
+                    كان لافتًا رغم صغر سنه.
+                </p>
+                <strong>م/ سالم عبدالله باعديل</strong>
+                <small>ضابط برنامج تطوير تخصص الطاقة الشمسية</small>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <strong>أحمد بن بصري</strong>
+
+        <p>
+            مدرب الذكاء الاصطناعي واللغة الإنجليزية
+        </p>
+
+        <div class="copyright">
+            © 2026 أحمد بن بصري — جميع الحقوق محفوظة
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("links").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
