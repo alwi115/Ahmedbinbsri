@@ -1,825 +1,1949 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>أحمد بن بصري | مدرب الذكاء الاصطناعي واللغة الإنجليزية</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --navy:#071a2d;
-            --navy2:#0b2945;
-            --blue:#3d82b7;
-            --light:#dcecf7;
-            --gold:#e8c69a;
-            --white:#fff;
-            --bg:#f6f9fb;
-            --text:#12263a;
-            --muted:#718294;
-        }
-
-        * {
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-
-        html {
-            scroll-behavior:smooth;
-        }
-
-        body {
-            font-family:"Cairo",sans-serif;
-            background:var(--bg);
-            color:var(--text);
-            line-height:1.8;
-        }
-
-        a {
-            text-decoration:none;
-            color:inherit;
-        }
-
-        .container {
-            width:min(1180px,92%);
-            margin:auto;
-        }
-
-        /* NAVBAR */
-
-        nav {
-            position:fixed;
-            top:18px;
-            right:50%;
-            transform:translateX(50%);
-            width:min(1180px,92%);
-            z-index:1000;
-
-            background:rgba(255,255,255,.82);
-            backdrop-filter:blur(20px);
-
-            border:1px solid rgba(255,255,255,.7);
-            border-radius:20px;
-
-            box-shadow:0 15px 40px rgba(7,26,45,.08);
-        }
-
-        .nav-inner {
-            height:75px;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            padding:0 22px;
-        }
-
-        .logo {
-            font-size:21px;
-            font-weight:900;
-            color:var(--navy);
-        }
-
-        .logo span {
-            color:var(--blue);
-        }
-
-        .links {
-            display:flex;
-            gap:28px;
-            list-style:none;
-        }
-
-        .links a {
-            font-size:14px;
-            font-weight:700;
-            color:#4b6073;
-            transition:.3s;
-        }
-
-        .links a:hover {
-            color:var(--blue);
-        }
-
-        .nav-btn {
-            padding:10px 18px;
-            border-radius:12px;
-            color:#fff !important;
-            background:var(--navy);
-        }
-
-        .menu {
-            display:none;
-            border:0;
-            background:var(--light);
-            color:var(--navy);
-            width:42px;
-            height:42px;
-            border-radius:12px;
-            font-size:21px;
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height:100vh;
-            padding:160px 0 90px;
-
-            background:
-                radial-gradient(circle at 85% 20%,rgba(141,196,232,.35),transparent 30%),
-                radial-gradient(circle at 10% 90%,rgba(232,198,154,.15),transparent 30%),
-                #f7fafc;
-        }
-
-        .hero-grid {
-            display:grid;
-            grid-template-columns:1.05fr .95fr;
-            align-items:center;
-            gap:70px;
-        }
-
-        .badge {
-            display:inline-block;
-            padding:8px 16px;
-            border-radius:50px;
-            background:#fff;
-            color:var(--blue);
-            font-size:13px;
-            font-weight:800;
-            box-shadow:0 8px 25px rgba(7,26,45,.06);
-        }
-
-        h1 {
-            margin-top:20px;
-            color:var(--navy);
-            font-size:clamp(45px,6vw,76px);
-            line-height:1.15;
-            font-weight:900;
-        }
-
-        h1 span {
-            color:var(--blue);
-        }
-
-        .hero p {
-            margin-top:22px;
-            max-width:600px;
-            color:var(--muted);
-            font-size:17px;
-        }
-
-        .buttons {
-            display:flex;
-            gap:14px;
-            margin-top:30px;
-        }
-
-        .btn {
-            padding:13px 24px;
-            border-radius:13px;
-            font-weight:800;
-            font-size:14px;
-            transition:.3s;
-        }
-
-        .primary {
-            color:#fff;
-            background:linear-gradient(135deg,var(--navy),var(--blue));
-            box-shadow:0 12px 30px rgba(61,130,183,.25);
-        }
-
-        .secondary {
-            color:var(--navy);
-            background:#fff;
-            border:1px solid #e1e8ee;
-        }
-
-        .btn:hover {
-            transform:translateY(-3px);
-        }
-
-        /* IMAGE */
-
-        .visual {
-            position:relative;
-            max-width:440px;
-            margin:auto;
-        }
-
-        .visual::before {
-            content:"";
-            position:absolute;
-            inset:20px -20px -20px 20px;
-            background:var(--light);
-            border-radius:35px;
-            transform:rotate(-5deg);
-        }
-
-        .photo {
-            position:relative;
-            z-index:2;
-            width:100%;
-            aspect-ratio:4/5;
-            border-radius:35px;
-            object-fit:cover;
-            background:linear-gradient(135deg,var(--navy),var(--blue));
-            box-shadow:0 30px 80px rgba(7,26,45,.2);
-        }
-
-        .float {
-            position:absolute;
-            z-index:5;
-            padding:14px 18px;
-            border-radius:17px;
-            background:rgba(255,255,255,.92);
-            backdrop-filter:blur(15px);
-            box-shadow:0 18px 40px rgba(7,26,45,.13);
-        }
-
-        .float strong {
-            display:block;
-            color:var(--navy);
-            font-size:22px;
-        }
-
-        .float small {
-            color:var(--muted);
-        }
-
-        .float.one {
-            left:-30px;
-            bottom:50px;
-        }
-
-        .float.two {
-            right:-30px;
-            top:50px;
-        }
-
-        /* SECTIONS */
-
-        section {
-            padding:100px 0;
-        }
-
-        .title {
-            text-align:center;
-            max-width:700px;
-            margin:0 auto 50px;
-        }
-
-        .title span {
-            color:var(--blue);
-            font-size:13px;
-            font-weight:900;
-        }
-
-        .title h2 {
-            color:var(--navy);
-            font-size:clamp(30px,4vw,48px);
-            line-height:1.3;
-        }
-
-        .title p {
-            color:var(--muted);
-            margin-top:12px;
-        }
-
-        /* CHALLENGE */
-
-        .challenge {
-            background:var(--navy);
-            color:#fff;
-        }
-
-        .challenge-box {
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            gap:30px;
-        }
-
-        .challenge h2 {
-            font-size:38px;
-        }
-
-        .challenge p {
-            color:rgba(255,255,255,.65);
-        }
-
-        .gold-btn {
-            flex-shrink:0;
-            background:var(--gold);
-            color:var(--navy);
-        }
-
-        /* COURSES */
-
-        .courses {
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:22px;
-        }
-
-        .course {
-            padding:30px;
-            background:#fff;
-            border-radius:23px;
-            border:1px solid #e7edf1;
-            transition:.35s;
-        }
-
-        .course:hover {
-            transform:translateY(-8px);
-            box-shadow:0 20px 50px rgba(7,26,45,.1);
-        }
-
-        .icon {
-            width:50px;
-            height:50px;
-            display:grid;
-            place-items:center;
-            border-radius:14px;
-            background:var(--light);
-            color:var(--blue);
-            font-size:20px;
-        }
-
-        .course h3 {
-            margin-top:20px;
-            color:var(--navy);
-            font-size:19px;
-        }
-
-        .course p {
-            color:var(--muted);
-            font-size:13px;
-            margin-top:8px;
-        }
-
-        .count {
-            display:block;
-            margin-top:20px;
-            color:var(--blue);
-            font-size:12px;
-            font-weight:800;
-        }
-
-        /* ABOUT */
-
-        .about {
-            background:var(--navy);
-            color:#fff;
-        }
-
-        .about-grid {
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:70px;
-            align-items:center;
-        }
-
-        .about h2 {
-            font-size:45px;
-        }
-
-        .about p {
-            margin-top:18px;
-            color:rgba(255,255,255,.65);
-        }
-
-        .stats {
-            display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:15px;
-        }
-
-        .stat {
-            padding:28px;
-            border:1px solid rgba(255,255,255,.08);
-            background:rgba(255,255,255,.04);
-            border-radius:20px;
-        }
-
-        .stat strong {
-            color:var(--gold);
-            font-size:35px;
-        }
-
-        .stat small {
-            display:block;
-            color:rgba(255,255,255,.55);
-        }
-
-        /* TESTIMONIALS */
-
-        .reviews {
-            display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:22px;
-        }
-
-        .review {
-            padding:30px;
-            background:#fff;
-            border-radius:22px;
-            box-shadow:0 10px 35px rgba(7,26,45,.05);
-        }
-
-        .review .quote {
-            color:var(--gold);
-            font-size:38px;
-        }
-
-        .review p {
-            color:#586b7c;
-            font-size:14px;
-        }
-
-        .review strong {
-            display:block;
-            margin-top:20px;
-            color:var(--navy);
-        }
-
-        .review small {
-            color:var(--muted);
-        }
-
-        /* FOOTER */
-
-        footer {
-            background:#041321;
-            color:rgba(255,255,255,.6);
-            padding:50px 0 20px;
-            text-align:center;
-        }
-
-        footer strong {
-            color:#fff;
-            font-size:22px;
-        }
-
-        footer p {
-            margin-top:10px;
-            font-size:13px;
-        }
-
-        .copyright {
-            margin-top:30px;
-            padding-top:20px;
-            border-top:1px solid rgba(255,255,255,.08);
-            font-size:11px;
-        }
-
-        @media(max-width:900px) {
-            .links {
-                display:none;
-                position:absolute;
-                top:80px;
-                right:0;
-                left:0;
-                padding:20px;
-                flex-direction:column;
-                background:#fff;
-                border-radius:18px;
-                box-shadow:0 20px 50px rgba(7,26,45,.12);
-            }
-
-            .links.active {
-                display:flex;
-            }
-
-            .menu {
-                display:block;
-            }
-
-            .nav-btn {
-                display:none;
-            }
-
-            .hero-grid,
-            .about-grid {
-                grid-template-columns:1fr;
-                text-align:center;
-            }
-
-            .hero p {
-                margin-left:auto;
-                margin-right:auto;
-            }
-
-            .buttons {
-                justify-content:center;
-            }
-
-            .courses {
-                grid-template-columns:repeat(2,1fr);
-            }
-        }
-
-        @media(max-width:600px) {
-            section {
-                padding:70px 0;
-            }
-
-            .hero {
-                padding-top:130px;
-            }
-
-            .hero h1 {
-                font-size:43px;
-            }
-
-            .buttons {
-                flex-direction:column;
-            }
-
-            .btn {
-                text-align:center;
-            }
-
-            .visual {
-                width:85%;
-            }
-
-            .float.one {
-                left:-10px;
-            }
-
-            .float.two {
-                right:-10px;
-            }
-
-            .challenge-box {
-                flex-direction:column;
-                text-align:center;
-            }
-
-            .courses,
-            .reviews {
-                grid-template-columns:1fr;
-            }
-
-            .about h2 {
-                font-size:34px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>أحمد بن بصري | AI & English Trainer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   LUXURY DESIGN SYSTEM
+========================================================= */
+
+:root {
+    --black: #030b13;
+    --navy: #061827;
+    --navy2: #0a2439;
+
+    --blue: #4d91c2;
+    --blue2: #8dc7ea;
+
+    --gold: #cba86a;
+    --gold-light: #ead5a7;
+
+    --white: #ffffff;
+    --cream: #f4f0e8;
+
+    --text: #142b3d;
+    --muted: #7c8b98;
+
+    --line: rgba(255,255,255,.10);
+    --dark-line: rgba(7,26,45,.10);
+
+    --container: 1240px;
+
+    --ease: cubic-bezier(.2,.8,.2,1);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Cairo", sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: min(var(--container), 90%);
+    margin-inline: auto;
+}
+
+/* =========================================================
+   CUSTOM CURSOR LIGHT
+========================================================= */
+
+.cursor-light {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+
+    background: radial-gradient(
+        circle,
+        rgba(77,145,194,.09),
+        transparent 70%
+    );
+
+    transform: translate(-50%, -50%);
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    position: fixed;
+    top: 20px;
+    right: 50%;
+    transform: translateX(50%);
+
+    width: min(1240px, 92%);
+    height: 76px;
+
+    z-index: 1000;
+
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 22px;
+
+    background: rgba(4,17,28,.72);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    transition: .4s var(--ease);
+}
+
+.navbar.scrolled {
+    top: 10px;
+    background: rgba(3,11,19,.94);
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+.nav-inner {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 22px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: white;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(203,168,106,.35);
+    border-radius: 13px;
+
+    color: var(--gold-light);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(203,168,106,.18),
+            rgba(77,145,194,.08)
+        );
+
+    font-size: 14px;
+}
+
+.brand span {
+    color: var(--gold-light);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    list-style: none;
+}
+
+.nav-links a {
+    position: relative;
+
+    color: rgba(255,255,255,.67);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: .3s;
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--gold);
+
+    transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 11px 18px;
+
+    border: 1px solid rgba(203,168,106,.4);
+    border-radius: 12px;
+
+    color: var(--gold-light);
+
+    background: rgba(203,168,106,.07);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    transition: .3s;
+}
+
+.nav-cta:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+.menu-btn {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+
+    background: rgba(255,255,255,.05);
+    color: white;
+
+    font-size: 20px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 150px 0 90px;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 75% 35%,
+            rgba(77,145,194,.22),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(203,168,106,.08),
+            transparent 25%
+        ),
+        var(--black);
+
+    overflow: hidden;
+}
+
+.hero-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+
+    align-items: center;
+
+    gap: 90px;
+}
+
+/* decorative grid */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: .35;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+    );
+}
+
+.hero-copy {
+    max-width: 680px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--gold-light);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: .5px;
+}
+
+.eyebrow::before {
+    content: "";
+
+    width: 32px;
+    height: 1px;
+
+    background: var(--gold);
+}
+
+.hero h1 {
+    margin-top: 22px;
+
+    font-size: clamp(48px, 6.5vw, 88px);
+
+    line-height: 1.08;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+}
+
+.hero h1 .gold {
+    display: block;
+    color: var(--gold-light);
+}
+
+.hero-description {
+    max-width: 620px;
+
+    margin-top: 28px;
+
+    color: rgba(255,255,255,.59);
+
+    font-size: 16px;
+    line-height: 2;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-top: 38px;
+}
+
+.lux-btn {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    min-height: 53px;
+
+    padding: 0 25px;
+
+    border-radius: 13px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    overflow: hidden;
+
+    transition: .35s var(--ease);
+}
+
+.lux-btn::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255,255,255,.2),
+        transparent
+    );
+
+    transform: translateX(-100%);
+
+    transition: .6s;
+}
+
+.lux-btn:hover::before {
+    transform: translateX(100%);
+}
+
+.btn-gold {
+    background: linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-light)
+    );
+
+    color: var(--black);
+
+    box-shadow: 0 12px 35px rgba(203,168,106,.18);
+}
+
+.btn-outline {
+    border: 1px solid rgba(255,255,255,.16);
+
+    color: white;
+
+    background: rgba(255,255,255,.035);
+}
+
+.lux-btn:hover {
+    transform: translateY(-4px);
+}
+
+/* HERO IMAGE */
+
+.hero-visual {
+    position: relative;
+
+    min-height: 600px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-orbit {
+    position: absolute;
+
+    width: 510px;
+    height: 510px;
+
+    border: 1px solid rgba(141,199,234,.12);
+    border-radius: 50%;
+}
+
+.hero-orbit::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 45px;
+
+    border: 1px dashed rgba(203,168,106,.14);
+
+    border-radius: 50%;
+}
+
+.portrait-frame {
+    position: relative;
+
+    width: min(410px, 80vw);
+    height: 510px;
+
+    border-radius: 200px 200px 35px 35px;
+
+    padding: 8px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(203,168,106,.65),
+            rgba(77,145,194,.4),
+            transparent
+        );
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.45),
+        0 0 80px rgba(77,145,194,.10);
+}
+
+.portrait {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 195px 195px 28px 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c304b,
+            #06121f
+        );
+}
+
+.portrait-label {
+    position: absolute;
+
+    right: -55px;
+    bottom: 55px;
+
+    width: 165px;
+
+    padding: 18px;
+
+    border: 1px solid rgba(255,255,255,.11);
+    border-radius: 18px;
+
+    background: rgba(4,17,28,.75);
+    backdrop-filter: blur(20px);
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.3);
+}
+
+.portrait-label small {
+    display: block;
+
+    color: rgba(255,255,255,.48);
+
+    font-size: 9px;
+}
+
+.portrait-label strong {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--gold-light);
+
+    font-size: 15px;
+}
+
+.hero-scroll {
+    position: absolute;
+
+    bottom: 30px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: rgba(255,255,255,.35);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.scroll-line {
+    width: 45px;
+    height: 1px;
+
+    background: rgba(255,255,255,.2);
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats-section {
+    background: var(--navy);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.stat {
+    padding: 45px 25px;
+
+    text-align: center;
+
+    border-left: 1px solid var(--line);
+}
+
+.stat:last-child {
+    border-left: 0;
+}
+
+.stat-number {
+    color: var(--gold-light);
+
+    font-size: 38px;
+    font-weight: 900;
+
+    line-height: 1.2;
+}
+
+.stat-label {
+    margin-top: 7px;
+
+    color: rgba(255,255,255,.42);
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   LIGHT SECTIONS
+========================================================= */
+
+.light-section {
+    padding: 120px 0;
+
+    background: var(--cream);
+}
+
+.section-heading {
+    max-width: 700px;
+
+    margin-bottom: 60px;
+}
+
+.section-heading.center {
+    margin-inline: auto;
+    text-align: center;
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--blue);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: .4px;
+}
+
+.section-label::before {
+    content: "";
+
+    width: 25px;
+    height: 1px;
+
+    background: var(--gold);
+}
+
+.section-heading h2 {
+    margin-top: 14px;
+
+    color: var(--navy);
+
+    font-size: clamp(34px,4vw,57px);
+
+    line-height: 1.25;
+
+    font-weight: 900;
+
+    letter-spacing: -1.5px;
+}
+
+.section-heading p {
+    margin-top: 14px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+/* =========================================================
+   COURSES
+========================================================= */
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.course-card {
+    position: relative;
+
+    min-height: 350px;
+
+    padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid rgba(7,26,45,.08);
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.9),
+            rgba(246,242,234,.8)
+        );
+
+    overflow: hidden;
+
+    transition: .45s var(--ease);
+}
+
+.course-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -100px;
+    left: -100px;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background: rgba(77,145,194,.08);
+
+    transition: .5s;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 25px 60px rgba(7,26,45,.12);
+}
+
+.course-card:hover::before {
+    transform: scale(1.4);
+}
+
+.course-top {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.course-number {
+    color: var(--blue);
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.course-icon {
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(203,168,106,.35);
+    border-radius: 14px;
+
+    color: var(--gold);
+
+    background: rgba(203,168,106,.08);
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.course-card h3 {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 35px;
+
+    color: var(--navy);
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+.course-card p {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.course-footer {
+    position: relative;
+    z-index: 2;
+
+    margin-top: auto;
+    padding-top: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-students {
+    color: var(--blue);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.course-link {
+    color: var(--navy);
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+/* =========================================================
+   ABOUT DARK
+========================================================= */
+
+.about-section {
+    position: relative;
+
+    padding: 130px 0;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(77,145,194,.14),
+            transparent 30%
+        ),
+        var(--black);
+
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: "AHMED";
+
+    position: absolute;
+
+    left: -30px;
+    bottom: -100px;
+
+    color: rgba(255,255,255,.018);
+
+    font-size: 230px;
+    font-weight: 900;
+}
+
+.about-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: 1fr .8fr;
+
+    gap: 100px;
+    align-items: center;
+}
+
+.about-section h2 {
+    margin-top: 15px;
+
+    font-size: clamp(36px,4.5vw,63px);
+
+    line-height: 1.2;
+}
+
+.about-section p {
+    margin-top: 25px;
+
+    max-width: 650px;
+
+    color: rgba(255,255,255,.54);
+
+    font-size: 14px;
+}
+
+.about-card {
+    padding: 35px;
+
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.035);
+    backdrop-filter: blur(15px);
+}
+
+.about-card-title {
+    color: var(--gold-light);
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.about-card h3 {
+    margin-top: 10px;
+
+    font-size: 25px;
+}
+
+.about-list {
+    margin-top: 25px;
+
+    display: grid;
+    gap: 14px;
+
+    list-style: none;
+}
+
+.about-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: rgba(255,255,255,.58);
+
+    font-size: 12px;
+}
+
+.about-list li::before {
+    content: "✓";
+
+    width: 24px;
+    height: 24px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: var(--gold-light);
+    background: rgba(203,168,106,.1);
+
+    font-size: 10px;
+}
+
+/* =========================================================
+   TESTIMONIALS
+========================================================= */
+
+.testimonials {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.testimonial {
+    padding: 35px;
+
+    border: 1px solid rgba(7,26,45,.08);
+    border-radius: 23px;
+
+    background: rgba(255,255,255,.5);
+
+    transition: .35s;
+}
+
+.testimonial:hover {
+    background: white;
+    transform: translateY(-5px);
+}
+
+.quote {
+    color: var(--gold);
+
+    font-size: 40px;
+    line-height: 1;
+}
+
+.testimonial p {
+    margin-top: 10px;
+
+    color: #596c7d;
+
+    font-size: 13px;
+}
+
+.testimonial-author {
+    margin-top: 22px;
+
+    color: var(--navy);
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.testimonial-role {
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.final-cta {
+    padding: 100px 0;
+
+    background: var(--cream);
+}
+
+.cta-box {
+    position: relative;
+
+    padding: 80px 40px;
+
+    text-align: center;
+
+    border: 1px solid rgba(203,168,106,.18);
+    border-radius: 35px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0,
+            rgba(77,145,194,.18),
+            transparent 35%
+        ),
+        var(--navy);
+
+    overflow: hidden;
+}
+
+.cta-box::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    top: -300px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(203,168,106,.08);
+
+    filter: blur(30px);
+}
+
+.cta-box > * {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-box h2 {
+    color: white;
+
+    font-size: clamp(34px,4vw,55px);
+
+    line-height: 1.25;
+}
+
+.cta-box p {
+    max-width: 600px;
+
+    margin: 15px auto 30px;
+
+    color: rgba(255,255,255,.5);
+
+    font-size: 13px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 65px 0 25px;
+
+    color: rgba(255,255,255,.45);
+
+    background: #02080e;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr .7fr .7fr;
+    gap: 60px;
+}
+
+.footer-brand {
+    color: white;
+
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.footer-brand span {
+    color: var(--gold);
+}
+
+.footer-description {
+    max-width: 400px;
+
+    margin-top: 12px;
+
+    font-size: 11px;
+}
+
+.footer-title {
+    color: white;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.footer-links {
+    margin-top: 12px;
+
+    display: grid;
+    gap: 6px;
+
+    list-style: none;
+
+    font-size: 11px;
+}
+
+.footer-links a {
+    transition: .3s;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255,255,255,.07);
+
+    text-align: center;
+
+    font-size: 9px;
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+
+    transition:
+        opacity .8s var(--ease),
+        transform .8s var(--ease);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px) {
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-copy {
+        margin-inline: auto;
+    }
+
+    .hero-description {
+        margin-inline: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        min-height: 550px;
+    }
+
+    .course-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-card {
+        max-width: 600px;
+    }
+}
+
+@media(max-width:800px) {
+
+    .nav-links {
+        position: fixed;
+
+        top: 86px;
+        right: 4%;
+        left: 4%;
+
+        padding: 25px;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 20px;
+
+        background: rgba(3,11,19,.97);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-10px);
+
+        transition: .3s;
+    }
+
+    .nav-links.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 7px 0;
+    }
+
+    .nav-cta {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .stat:nth-child(2) {
+        border-left: 0;
+    }
+
+    .testimonials {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width:600px) {
+
+    .navbar {
+        top: 10px;
+    }
+
+    .hero {
+        padding-top: 135px;
+    }
+
+    .hero h1 {
+        font-size: 47px;
+        letter-spacing: -2px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-actions .lux-btn {
+        width: 100%;
+    }
+
+    .hero-visual {
+        min-height: 470px;
+    }
+
+    .portrait-frame {
+        width: 290px;
+        height: 400px;
+    }
+
+    .hero-orbit {
+        width: 350px;
+        height: 350px;
+    }
+
+    .portrait-label {
+        right: -15px;
+        bottom: 25px;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat {
+        padding: 30px 10px;
+    }
+
+    .stat-number {
+        font-size: 28px;
+    }
+
+    .light-section,
+    .about-section {
+        padding: 80px 0;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-box {
+        padding: 55px 22px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-<nav>
-    <div class="nav-inner">
-        <a href="index.html" class="logo">
-            أحمد <span>بن بصري</span>
-        </a>
+<div class="cursor-light" id="cursorLight"></div>
 
-        <ul class="links" id="links">
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="courses.html">دوراتنا</a></li>
-            <li><a href="story.html">قصتي</a></li>
-            <li><a href="contact.html">تواصل الآن</a></li>
-        </ul>
+<!-- NAVBAR -->
 
-        <a href="contact.html" class="nav-btn">احجز تدريبًا الآن</a>
+<nav class="navbar" id="navbar">
 
-        <button class="menu" onclick="toggleMenu()">☰</button>
-    </div>
+<div class="nav-inner">
+
+<a href="index.html" class="brand">
+    <div class="brand-mark">AB</div>
+    أحمد <span>بن بصري</span>
+</a>
+
+<ul class="nav-links" id="navLinks">
+
+<li>
+<a href="index.html" class="active">الرئيسية</a>
+</li>
+
+<li>
+<a href="courses.html">دوراتنا</a>
+</li>
+
+<li>
+<a href="story.html">قصتي</a>
+</li>
+
+<li>
+<a href="contact.html">تواصل الآن</a>
+</li>
+
+</ul>
+
+<a href="contact.html" class="nav-cta">
+احجز تدريبًا
+<span>↗</span>
+</a>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+</div>
+
 </nav>
 
-<main>
+<!-- HERO -->
 
-<section class="hero">
-    <div class="container hero-grid">
+<header class="hero">
 
-        <div>
-            <span class="badge">مدرب دولي في الذكاء الاصطناعي واللغة الإنجليزية</span>
+<div class="container hero-grid">
 
-            <h1>
-                مرحبًا، أنا
-                <span>أحمد بن بصري</span>
-            </h1>
+<div class="hero-copy reveal">
 
-            <p>
-                تعلمت الإنجليزية في شهرين، وأعمل اليوم مترجمًا ومدربًا
-                في الذكاء الاصطناعي لمساعدة الآخرين على التقدم بسرعة
-                واكتساب المهارات التي يحتاجونها للمستقبل.
-            </p>
+<div class="eyebrow">
+مدرب دولي في الذكاء الاصطناعي واللغة الإنجليزية
+</div>
 
-            <div class="buttons">
-                <a href="courses.html" class="btn primary">استكشف الدورات</a>
-                <a href="contact.html" class="btn secondary">درّب فريقك</a>
-            </div>
-        </div>
+<h1>
+أصنع من
+<br>
+<span class="gold">التعلّم تأثيرًا.</span>
+</h1>
 
-        <div class="visual">
-            <!-- ضع صورة أحمد هنا -->
-            <div class="photo"></div>
+<p class="hero-description">
+أنا أحمد بن بصري، مترجم ومدرب في الذكاء الاصطناعي.
+تعلمت الإنجليزية خلال شهرين، واليوم أساعد آلاف المتعلمين
+على اكتساب المهارات التي يحتاجونها لعالم سريع التغير.
+</p>
 
-            <div class="float one">
-                <strong>+140K</strong>
-                <small>طالب على Udemy</small>
-            </div>
+<div class="hero-actions">
 
-            <div class="float two">
-                <strong>7</strong>
-                <small>منح دراسية ممولة</small>
-            </div>
-        </div>
+<a href="courses.html" class="lux-btn btn-gold">
+استكشف الدورات
+<span>↗</span>
+</a>
 
-    </div>
+<a href="contact.html" class="lux-btn btn-outline">
+درّب فريقك
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-visual reveal">
+
+<div class="hero-orbit"></div>
+
+<div class="portrait-frame">
+
+<img
+class="portrait"
+src="images/ahmed.jpg"
+alt="أحمد بن بصري"
+>
+
+</div>
+
+<div class="portrait-label">
+<small>مجال التخصص</small>
+<strong>AI • English • Education</strong>
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-scroll">
+<span>SCROLL</span>
+<div class="scroll-line"></div>
+</div>
+
+</header>
+
+<!-- STATS -->
+
+<section class="stats-section">
+
+<div class="container stats">
+
+<div class="stat reveal">
+<div class="stat-number">140K+</div>
+<div class="stat-label">طالب على Udemy</div>
+</div>
+
+<div class="stat reveal">
+<div class="stat-number">7</div>
+<div class="stat-label">منح دراسية ممولة بالكامل</div>
+</div>
+
+<div class="stat reveal">
+<div class="stat-number">6K+</div>
+<div class="stat-label">متعلمين في دورات الذكاء الاصطناعي</div>
+</div>
+
+<div class="stat reveal">
+<div class="stat-number">30</div>
+<div class="stat-label">يومًا لتحدي الإنجليزية</div>
+</div>
+
+</div>
+
 </section>
 
-<section class="challenge">
-    <div class="container challenge-box">
+<!-- COURSES -->
 
-        <div>
-            <h2>تحدي الـ30 يوم</h2>
-            <p>
-                رحلة مكثفة لاكتساب اللغة الإنجليزية خلال 30 يومًا.
-            </p>
-        </div>
+<section class="light-section">
 
-        <a href="courses.html" class="btn gold-btn">
-            اكتشف التحدي
-        </a>
+<div class="container">
 
-    </div>
+<div class="section-heading reveal">
+
+<div class="section-label">
+التعلّم بطريقة مختلفة
+</div>
+
+<h2>
+مهارات تواكب<br>
+المستقبل.
+</h2>
+
+<p>
+دورات عملية تجمع بين المعرفة والتطبيق،
+بعيدًا عن التعقيد والحشو.
+</p>
+
+</div>
+
+<div class="course-grid">
+
+<div class="course-card reveal">
+
+<div class="course-top">
+<span class="course-number">01 / AI</span>
+<div class="course-icon">AI</div>
+</div>
+
+<h3>
+كيف أستخدم الذكاء الاصطناعي في حياتي اليومية؟
+</h3>
+
+<p>
+تعلم استخدام ChatGPT وأدوات الذكاء الاصطناعي
+لزيادة إنتاجيتك وتسهيل حياتك اليومية.
+</p>
+
+<div class="course-footer">
+<span class="course-students">1,321 طالب</span>
+<a href="courses.html" class="course-link">اكتشف الدورة ↗</a>
+</div>
+
+</div>
+
+<div class="course-card reveal">
+
+<div class="course-top">
+<span class="course-number">02 / EDU</span>
+<div class="course-icon">EDU</div>
+</div>
+
+<h3>
+الذكاء الاصطناعي للتميز الأكاديمي
+</h3>
+
+<p>
+استخدم الذكاء الاصطناعي في الأبحاث،
+العروض التقديمية والتعلم التفاعلي.
+</p>
+
+<div class="course-footer">
+<span class="course-students">3,556 طالب</span>
+<a href="courses.html" class="course-link">اكتشف الدورة ↗</a>
+</div>
+
+</div>
+
+<div class="course-card reveal">
+
+<div class="course-top">
+<span class="course-number">03 / TOEFL</span>
+<div class="course-icon">EN</div>
+</div>
+
+<h3>
+Get 100+ in TOEFL
+</h3>
+
+<p>
+خطة مركزة للاستعداد لاختبار TOEFL
+خلال 30 يومًا.
+</p>
+
+<div class="course-footer">
+<span class="course-students">23,201 طالب</span>
+<a href="courses.html" class="course-link">اكتشف الدورة ↗</a>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section>
-    <div class="container">
+<!-- ABOUT -->
 
-        <div class="title">
-            <span>الدورات الأكثر تميزًا</span>
-            <h2>تعلم مهارات المستقبل</h2>
-            <p>
-                دورات عملية تساعدك على استخدام الذكاء الاصطناعي
-                وتطوير لغتك ومهاراتك الأكاديمية.
-            </p>
-        </div>
+<section class="about-section">
 
-        <div class="courses">
+<div class="container about-grid">
 
-            <div class="course">
-                <div class="icon">AI</div>
-                <h3>كيف أستخدم الذكاء الاصطناعي في حياتي اليومية؟</h3>
-                <p>
-                    تعلم استخدام أدوات الذكاء الاصطناعي بطريقة عملية
-                    في حياتك اليومية.
-                </p>
-                <span class="count">1,321 طالب</span>
-            </div>
+<div class="reveal">
 
-            <div class="course">
-                <div class="icon">🎓</div>
-                <h3>الذكاء الاصطناعي للتميز الأكاديمي</h3>
-                <p>
-                    استخدم الذكاء الاصطناعي للدراسة والبحث والعروض
-                    التقديمية والتعلم التفاعلي.
-                </p>
-                <span class="count">3,556 طالب</span>
-            </div>
+<div class="section-label" style="color:var(--gold-light)">
+القصة وراء الاسم
+</div>
 
-            <div class="course">
-                <div class="icon">EN</div>
-                <h3>Get 100+ in TOEFL</h3>
-                <p>
-                    خطة مكثفة للاستعداد لاختبار التوفل خلال 30 يومًا.
-                </p>
-                <span class="count">23,201 طالب</span>
-            </div>
+<h2>
+بدأت كمتعلم...
+وأصبحت أساعد الآخرين على التعلم.
+</h2>
 
-        </div>
+<p>
+نشأت في حضرموت، ومررت برحلة طويلة من تعلم الإنجليزية
+والبحث عن المنح الدراسية، ثم صناعة المحتوى والتدريب.
+اليوم أركز على تحويل المعرفة المعقدة إلى خطوات عملية
+يمكن لأي شخص تطبيقها.
+</p>
 
-    </div>
+<a href="story.html"
+class="lux-btn btn-gold"
+style="margin-top:30px;">
+اكتشف قصتي ↗
+</a>
+
+</div>
+
+<div class="about-card reveal">
+
+<div class="about-card-title">
+WHAT I BELIEVE
+</div>
+
+<h3>
+التعليم الحقيقي لا يعطيك إجابة فقط...
+بل يجعلك قادرًا على إيجاد الإجابة بنفسك.
+</h3>
+
+<ul class="about-list">
+
+<li>تبسيط المفاهيم المعقدة</li>
+<li>التعلم بالتطبيق والممارسة</li>
+<li>استخدام التقنية بذكاء</li>
+<li>تطوير الشباب والمهارات المستقبلية</li>
+<li>صناعة أثر حقيقي قبل الشهرة</li>
+
+</ul>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="about">
-    <div class="container about-grid">
+<!-- TESTIMONIALS -->
 
-        <div>
-            <span style="color:#8dc4e8;font-weight:800;">عن أحمد</span>
+<section class="light-section">
 
-            <h2>من طالب يبحث عن فرصة إلى مدرب يساعد الآلاف</h2>
+<div class="container">
 
-            <p>
-                أحمد بن بصري مترجم محترف ومدرب معتمد في الذكاء الاصطناعي.
-                بدأ رحلته بتعلم الإنجليزية خلال فترة قصيرة، ثم انتقل
-                إلى صناعة المحتوى والتدريب في مجالات اللغة والذكاء الاصطناعي.
-            </p>
+<div class="section-heading center reveal">
 
-            <a href="story.html" class="btn gold-btn" style="display:inline-block;margin-top:25px;">
-                اقرأ قصتي
-            </a>
-        </div>
+<div class="section-label">
+كلمات من المتدربين
+</div>
 
-        <div class="stats">
+<h2>
+الأثر يتحدث عن نفسه.
+</h2>
 
-            <div class="stat">
-                <strong>140K+</strong>
-                <small>طالب على Udemy</small>
-            </div>
+</div>
 
-            <div class="stat">
-                <strong>7</strong>
-                <small>منح دراسية ممولة بالكامل</small>
-            </div>
+<div class="testimonials">
 
-            <div class="stat">
-                <strong>6K+</strong>
-                <small>طلاب في دورات الذكاء الاصطناعي</small>
-            </div>
+<div class="testimonial reveal">
 
-            <div class="stat">
-                <strong>30</strong>
-                <small>يومًا لتحدي اللغة الإنجليزية</small>
-            </div>
+<div class="quote">“</div>
 
-        </div>
+<p>
+دورة اللغة الإنجليزية كانت عملية ومفيدة جدًا للمبتدئين،
+والشرح واضح ومنظم.
+</p>
 
-    </div>
+<div class="testimonial-author">
+د. مرشد سالم الجرو
+</div>
+
+<div class="testimonial-role">
+نائب رئيس مجلس إدارة مركز النوابغ
+</div>
+
+</div>
+
+<div class="testimonial reveal">
+
+<div class="quote">“</div>
+
+<p>
+دورة الذكاء الاصطناعي للمعلمين كانت بأسلوب بسيط وسهل،
+مع تطبيقات عملية يمكن الاستفادة منها مباشرة.
+</p>
+
+<div class="testimonial-author">
+م/ عبدالباسط بخضر
+</div>
+
+<div class="testimonial-role">
+المدير التنفيذي – مؤسسة المنظومة للتنمية
+</div>
+
+</div>
+
+<div class="testimonial reveal">
+
+<div class="quote">“</div>
+
+<p>
+فخور بحبه للتعلم ورغبته الدائمة في مساعدة الآخرين.
+</p>
+
+<div class="testimonial-author">
+الأستاذ علي بصري
+</div>
+
+<div class="testimonial-role">
+والد أحمد
+</div>
+
+</div>
+
+<div class="testimonial reveal">
+
+<div class="quote">“</div>
+
+<p>
+مستوى العرض والإقناع والتمكن من الذكاء الاصطناعي
+كان لافتًا رغم صغر سنه.
+</p>
+
+<div class="testimonial-author">
+م/ سالم عبدالله باعديل
+</div>
+
+<div class="testimonial-role">
+ضابط برنامج تطوير تخصص الطاقة الشمسية
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section>
-    <div class="container">
+<!-- CTA -->
 
-        <div class="title">
-            <span>آراء المتدربين</span>
-            <h2>تجارب من تعلموا معي</h2>
-        </div>
+<section class="final-cta">
 
-        <div class="reviews">
+<div class="container">
 
-            <div class="review">
-                <div class="quote">“</div>
-                <p>
-                    دورة اللغة الإنجليزية كانت عملية ومفيدة جدًا
-                    للمبتدئين، والشرح واضح ومنظم.
-                </p>
-                <strong>د. مرشد سالم الجرو</strong>
-                <small>نائب رئيس مجلس إدارة مركز النوابغ</small>
-            </div>
+<div class="cta-box reveal">
 
-            <div class="review">
-                <div class="quote">“</div>
-                <p>
-                    دورة الذكاء الاصطناعي للمعلمين كانت بأسلوب بسيط
-                    وسهل مع تطبيقات عملية.
-                </p>
-                <strong>م/ عبدالباسط بخضر</strong>
-                <small>المدير التنفيذي – مؤسسة المنظومة للتنمية</small>
-            </div>
+<h2>
+جاهز تبدأ؟
+</h2>
 
-            <div class="review">
-                <div class="quote">“</div>
-                <p>
-                    فخور بحبه للتعلم ورغبته الدائمة في مساعدة الآخرين.
-                </p>
-                <strong>الأستاذ علي بصري</strong>
-                <small>والد أحمد</small>
-            </div>
+<p>
+سواء كنت تريد تطوير نفسك أو تدريب فريقك،
+لنصنع معًا تجربة تعلم مختلفة.
+</p>
 
-            <div class="review">
-                <div class="quote">“</div>
-                <p>
-                    مستوى العرض والإقناع والتمكن من الذكاء الاصطناعي
-                    كان لافتًا رغم صغر سنه.
-                </p>
-                <strong>م/ سالم عبدالله باعديل</strong>
-                <small>ضابط برنامج تطوير تخصص الطاقة الشمسية</small>
-            </div>
+<a href="contact.html" class="lux-btn btn-gold">
+تواصل الآن ↗
+</a>
 
-        </div>
+</div>
 
-    </div>
+</div>
+
 </section>
 
-</main>
+<!-- FOOTER -->
 
 <footer>
-    <div class="container">
-        <strong>أحمد بن بصري</strong>
 
-        <p>
-            مدرب الذكاء الاصطناعي واللغة الإنجليزية
-        </p>
+<div class="container">
 
-        <div class="copyright">
-            © 2026 أحمد بن بصري — جميع الحقوق محفوظة
-        </div>
-    </div>
+<div class="footer-grid">
+
+<div>
+
+<div class="footer-brand">
+أحمد <span>بن بصري</span>
+</div>
+
+<p class="footer-description">
+مدرب في الذكاء الاصطناعي واللغة الإنجليزية،
+وصانع محتوى يهدف إلى تحويل المعرفة إلى أثر.
+</p>
+
+</div>
+
+<div>
+
+<div class="footer-title">
+التصفح
+</div>
+
+<ul class="footer-links">
+<li><a href="index.html">الرئيسية</a></li>
+<li><a href="courses.html">الدورات</a></li>
+<li><a href="story.html">قصتي</a></li>
+</ul>
+
+</div>
+
+<div>
+
+<div class="footer-title">
+تواصل
+</div>
+
+<ul class="footer-links">
+<li><a href="contact.html">تواصل الآن</a></li>
+<li><a href="contact.html">تدريب المؤسسات</a></li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 أحمد بن بصري — جميع الحقوق محفوظة
+</div>
+
+</div>
+
 </footer>
 
 <script>
-function toggleMenu() {
-    document.getElementById("links").classList.toggle("active");
-}
+
+const navbar = document.getElementById("navbar");
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 40) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+
+});
+
+menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("open");
+    document.body.classList.toggle("menu-open");
+
+});
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+
+        });
+
+    },
+    { threshold: .12 }
+);
+
+document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+});
+
+const cursor = document.getElementById("cursorLight");
+
+document.addEventListener("mousemove", e => {
+
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+
+});
+
 </script>
 
 </body>
