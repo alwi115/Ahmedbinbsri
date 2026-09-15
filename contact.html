@@ -1,28 +1,279 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تواصل الآن | AI Mentor</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>تواصل الآن | أحمد بن بصري</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-<header class="navbar"><a class="logo" href="index.html"><span>AI</span> Mentor</a><button class="menu-toggle">☰</button><nav><a href="index.html">الرئيسية</a><a href="courses.html">دوراتنا</a><a href="story.html">قصتي</a><a class="active" href="contact.html">تواصل الآن</a></nav><a class="nav-cta" href="contact.html">ابدأ الآن</a></header>
+
+
+<header class="navbar">
+
+  <div class="container nav-inner">
+
+    <a href="index.html" class="logo">
+      أحمد <span>بن بصري</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <nav id="navMenu">
+      <a href="index.html">الرئيسية</a>
+      <a href="courses.html">دوراتنا</a>
+      <a href="story.html">قصتي</a>
+      <a class="active" href="contact.html">تواصل الآن</a>
+    </nav>
+
+    <a href="contact.html" class="nav-btn">
+      احجز تدريبًا الآن
+    </a>
+
+  </div>
+
+</header>
+
+
 <main>
-<section class="contact-wrap">
-  <div class="contact-info reveal"><p class="eyebrow">LET'S CONNECT</p><h1>جاهز <em>تبدأ؟</em></h1><p>سواء كنت تريد تطوير الإنجليزية أو تعلم الذكاء الاصطناعي، أخبرني بهدفك وسأساعدك في اختيار المسار المناسب.</p>
-  <div class="contact-links"><a href="#"><span>✉</span><div><small>البريد الإلكتروني</small><b>hello@example.com</b></div></a><a href="#"><span>◉</span><div><small>واتساب</small><b>+968 0000 0000</b></div></a><a href="#"><span>◎</span><div><small>Instagram</small><b>@ai.mentor</b></div></a></div></div>
-  <form class="contact-form reveal" id="contactForm">
-    <label>الاسم<input required type="text" placeholder="اكتب اسمك"></label>
-    <label>البريد الإلكتروني<input required type="email" placeholder="name@example.com"></label>
-    <label>ما المجال الذي تهتم به؟<select required><option value="">اختر المجال</option><option>الذكاء الاصطناعي</option><option>اللغة الإنجليزية</option><option>كلاهما</option><option>تدريب خاص</option></select></label>
-    <label>رسالتك<textarea required rows="5" placeholder="اكتب هدفك أو استفسارك هنا..."></textarea></label>
-    <button class="btn primary" type="submit">أرسل طلبك <span>←</span></button>
-    <p class="form-message" id="formMessage"></p>
-  </form>
+
+<section class="page-hero">
+
+  <div class="container">
+
+    <span class="eyebrow">تواصل معي</span>
+
+    <h1>تواصل الآن</h1>
+
+    <p>
+      هل تريد تدريبًا لك أو لفريقك؟
+      أرسل تفاصيل طلبك وسنتواصل معك.
+    </p>
+
+  </div>
+
 </section>
+
+
+<section class="contact-section">
+
+  <div class="container contact-grid">
+
+
+    <div class="contact-info">
+
+      <span class="eyebrow">للتدريب والاستشارات</span>
+
+      <h2>
+        دعنا نبني برنامجًا يناسب احتياجك.
+      </h2>
+
+      <p>
+        أقدم برامج تدريبية مخصصة في الذكاء الاصطناعي
+        وتطبيقاته العملية، حضوريًا داخل اليمن أو عبر الإنترنت.
+      </p>
+
+
+      <div class="contact-item">
+
+        <div class="contact-icon">AI</div>
+
+        <div>
+          <strong>تدريب الذكاء الاصطناعي</strong>
+          <span>
+            برامج مخصصة للشركات والمؤسسات
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="contact-item">
+
+        <div class="contact-icon">EN</div>
+
+        <div>
+          <strong>اللغة الإنجليزية</strong>
+          <span>
+            TOEFL وتطوير مهارات اللغة
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="contact-item">
+
+        <div class="contact-icon">01</div>
+
+        <div>
+          <strong>تدريب مخصص</strong>
+          <span>
+            محتوى يناسب احتياجك واحتياج فريقك
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <form class="contact-form" id="contactForm">
+
+      <h3>أرسل طلبك</h3>
+
+      <label>
+        الاسم
+        <input
+          type="text"
+          name="name"
+          placeholder="اكتب اسمك"
+          required>
+      </label>
+
+
+      <label>
+        البريد الإلكتروني
+        <input
+          type="email"
+          name="email"
+          placeholder="example@email.com"
+          required>
+      </label>
+
+
+      <label>
+        نوع التدريب
+
+        <select name="type">
+
+          <option>تدريب ذكاء اصطناعي</option>
+
+          <option>تدريب اللغة الإنجليزية</option>
+
+          <option>TOEFL</option>
+
+          <option>تدريب لفريق / مؤسسة</option>
+
+          <option>استشارة</option>
+
+        </select>
+
+      </label>
+
+
+      <label>
+        رسالتك
+
+        <textarea
+          name="message"
+          rows="6"
+          placeholder="اكتب تفاصيل طلبك..."
+          required></textarea>
+
+      </label>
+
+
+      <button type="submit" class="btn primary">
+        إرسال الطلب
+      </button>
+
+      <div id="formMessage"></div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<section class="training-section">
+
+  <div class="container">
+
+    <span class="eyebrow">خدمات المؤسسات</span>
+
+    <h2>تدريب فريقك على مهارات المستقبل</h2>
+
+    <p>
+      تصميم محتوى مخصص، تدريب حضوري أو أونلاين،
+      خبرة في تدريب موظفي المؤسسات والجامعات،
+      ودعم وتقييم للأداء بعد التدريب.
+    </p>
+
+    <div class="training-grid">
+
+      <div>
+        <strong>01</strong>
+        <h3>محتوى مخصص</h3>
+        <p>
+          يتم بناء التدريب حسب احتياجات المؤسسة.
+        </p>
+      </div>
+
+      <div>
+        <strong>02</strong>
+        <h3>حضوري أو أونلاين</h3>
+        <p>
+          مرونة في طريقة تقديم التدريب.
+        </p>
+      </div>
+
+      <div>
+        <strong>03</strong>
+        <h3>تطبيق عملي</h3>
+        <p>
+          التركيز على استخدام الذكاء الاصطناعي
+          في المهام اليومية.
+        </p>
+      </div>
+
+      <div>
+        <strong>04</strong>
+        <h3>متابعة</h3>
+        <p>
+          دعم وتقييم للأداء بعد انتهاء البرنامج.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
 </main>
-<footer><div class="logo"><span>AI</span> Mentor</div><p>© 2026 جميع الحقوق محفوظة</p></footer>
+
+
+<footer>
+
+  <div class="container">
+
+    <p>
+      © 2026 أحمد بن بصري — جميع الحقوق محفوظة
+    </p>
+
+  </div>
+
+</footer>
+
+
 <script src="script.js"></script>
-</body></html>
+
+</body>
+</html>
