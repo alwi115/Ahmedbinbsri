@@ -9,18 +9,19 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 :root {
-    --navy:#071a2d;
-    --blue:#3d82b7;
-    --light:#dcecf7;
-    --gold:#e8c69a;
-    --bg:#f7f9fb;
-    --text:#12263a;
-    --muted:#718294;
+    --black:#030b13;
+    --navy:#061827;
+    --blue:#4d91c2;
+    --gold:#cba86a;
+    --gold-light:#ead5a7;
+    --cream:#f4f0e8;
+    --muted:#778896;
 }
 
 * {
@@ -29,10 +30,14 @@
     box-sizing:border-box;
 }
 
+html {
+    scroll-behavior:smooth;
+}
+
 body {
     font-family:"Cairo",sans-serif;
-    background:var(--bg);
-    color:var(--text);
+    background:var(--cream);
+    color:#132b3e;
     line-height:1.8;
 }
 
@@ -41,30 +46,40 @@ a {
     color:inherit;
 }
 
+button,
+input,
+textarea,
+select {
+    font-family:inherit;
+}
+
 .container {
-    width:min(1100px,92%);
+    width:min(1120px,90%);
     margin:auto;
 }
 
 /* NAV */
 
-nav {
+.navbar {
     position:fixed;
-    top:18px;
+    top:20px;
     right:50%;
     transform:translateX(50%);
-    width:min(1180px,92%);
+
+    width:min(1240px,92%);
+    height:76px;
+
     z-index:1000;
 
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:22px;
 
-    border-radius:20px;
-    box-shadow:0 15px 40px rgba(7,26,45,.08);
+    background:rgba(4,17,28,.85);
+    backdrop-filter:blur(24px);
 }
 
 .nav {
-    height:75px;
+    height:100%;
     padding:0 22px;
 
     display:flex;
@@ -72,285 +87,516 @@ nav {
     justify-content:space-between;
 }
 
-.logo {
-    font-size:21px;
+.brand {
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:#fff;
+    font-size:18px;
     font-weight:900;
-    color:var(--navy);
 }
 
-.logo span {
-    color:var(--blue);
+.brand-mark {
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid rgba(203,168,106,.35);
+    border-radius:13px;
+
+    color:var(--gold-light);
+}
+
+.brand span {
+    color:var(--gold-light);
 }
 
 .links {
     display:flex;
-    gap:28px;
+    gap:32px;
     list-style:none;
 }
 
 .links a {
-    color:#4b6073;
-    font-size:14px;
+    color:rgba(255,255,255,.65);
+
+    font-size:13px;
     font-weight:700;
 }
 
+.links a:hover,
+.links a.active {
+    color:#fff;
+}
+
 .nav-btn {
-    padding:10px 18px;
-    color:#fff !important;
-    background:var(--navy);
+    padding:11px 18px;
+
+    border:1px solid rgba(203,168,106,.4);
     border-radius:12px;
+
+    color:var(--gold-light);
+
+    font-size:12px;
+    font-weight:800;
 }
 
 .menu {
     display:none;
-    width:42px;
-    height:42px;
-    border:0;
+
+    width:44px;
+    height:44px;
+
+    border:1px solid rgba(255,255,255,.1);
     border-radius:12px;
-    background:var(--light);
+
+    background:rgba(255,255,255,.05);
+    color:#fff;
 }
 
 /* HERO */
 
 .hero {
-    padding:180px 0 90px;
+    padding:190px 0 100px;
+
     text-align:center;
 
+    color:#fff;
+
     background:
-        radial-gradient(circle at 50% 0,rgba(141,196,232,.3),transparent 35%),
-        var(--bg);
+        radial-gradient(
+            circle at 50% 0,
+            rgba(77,145,194,.2),
+            transparent 35%
+        ),
+        var(--black);
+}
+
+.hero small {
+    color:var(--gold-light);
+
+    font-size:10px;
+    font-weight:900;
 }
 
 .hero h1 {
-    color:var(--navy);
-    font-size:clamp(40px,6vw,65px);
+    margin-top:12px;
+
+    font-size:clamp(44px,6vw,72px);
+
+    line-height:1.15;
+
     font-weight:900;
 }
 
 .hero h1 span {
-    color:var(--blue);
+    color:var(--gold-light);
 }
 
 .hero p {
     max-width:650px;
-    margin:15px auto;
-    color:var(--muted);
+
+    margin:18px auto 0;
+
+    color:rgba(255,255,255,.5);
+
+    font-size:13px;
 }
 
 /* CONTACT */
 
-.contact {
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:25px;
-    padding-bottom:100px;
+.contact-section {
+    padding:110px 0;
 }
 
+.contact-grid {
+    display:grid;
+    grid-template-columns:.75fr 1.25fr;
+    gap:25px;
+}
+
+/* INFO */
+
 .info {
-    padding:35px;
-    border-radius:25px;
-    background:var(--navy);
+    position:relative;
+
+    padding:40px;
+
+    border-radius:30px;
+
     color:#fff;
+
+    background:
+        radial-gradient(
+            circle at 100% 0,
+            rgba(77,145,194,.2),
+            transparent 35%
+        ),
+        var(--navy);
+
+    overflow:hidden;
+}
+
+.info::after {
+    content:"CONTACT";
+
+    position:absolute;
+
+    left:-30px;
+    bottom:-55px;
+
+    color:rgba(255,255,255,.025);
+
+    font-size:90px;
+    font-weight:900;
+}
+
+.info > * {
+    position:relative;
+    z-index:2;
+}
+
+.info-label {
+    color:var(--gold-light);
+
+    font-size:10px;
+    font-weight:900;
 }
 
 .info h2 {
-    font-size:30px;
+    margin-top:10px;
+
+    font-size:35px;
+
+    line-height:1.3;
 }
 
 .info > p {
-    margin-top:10px;
-    color:rgba(255,255,255,.6);
+    margin-top:12px;
+
+    color:rgba(255,255,255,.5);
+
+    font-size:12px;
 }
 
-.item {
+.info-item {
     display:flex;
+    align-items:flex-start;
     gap:14px;
-    margin-top:28px;
+
+    margin-top:30px;
 }
 
-.icon {
-    width:44px;
-    height:44px;
+.info-icon {
+    width:43px;
+    height:43px;
+
     flex-shrink:0;
 
     display:grid;
     place-items:center;
 
-    border-radius:12px;
+    border:1px solid rgba(203,168,106,.18);
+    border-radius:13px;
 
-    background:rgba(255,255,255,.08);
-    color:var(--gold);
+    color:var(--gold-light);
+
+    background:rgba(203,168,106,.06);
+
+    font-size:10px;
+    font-weight:900;
 }
 
-.item h3 {
-    font-size:14px;
+.info-item h3 {
+    font-size:13px;
 }
 
-.item p {
-    color:rgba(255,255,255,.55);
-    font-size:12px;
+.info-item p {
+    margin-top:2px;
+
+    color:rgba(255,255,255,.45);
+
+    font-size:10px;
 }
+
+/* FORM */
 
 .form {
-    padding:35px;
-    border-radius:25px;
-    background:#fff;
-    border:1px solid #e4ebef;
-    box-shadow:0 15px 45px rgba(7,26,45,.06);
+    padding:40px;
+
+    border:1px solid rgba(7,26,45,.08);
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.95),
+            rgba(246,242,234,.9)
+        );
+
+    box-shadow:0 20px 60px rgba(7,26,45,.07);
+}
+
+.form-title {
+    color:var(--navy);
+
+    font-size:28px;
+    font-weight:900;
+}
+
+.form-subtitle {
+    margin-top:5px;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.form-row {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+
+    margin-top:25px;
 }
 
 .group {
-    margin-bottom:18px;
+    margin-bottom:17px;
+}
+
+.group.full {
+    margin-top:15px;
 }
 
 label {
     display:block;
+
     margin-bottom:7px;
+
     color:var(--navy);
-    font-size:13px;
-    font-weight:800;
+
+    font-size:11px;
+    font-weight:900;
 }
 
 input,
 textarea,
 select {
     width:100%;
+
     padding:14px 16px;
 
-    border:1px solid #e1e8ee;
+    border:1px solid #e1e6e9;
     border-radius:13px;
 
     outline:none;
 
-    font-family:inherit;
-    background:#fafcfd;
-}
+    color:#173044;
 
-textarea {
-    min-height:140px;
-    resize:vertical;
+    background:rgba(255,255,255,.65);
+
+    font-size:12px;
+
+    transition:.3s;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
     border-color:var(--blue);
-    box-shadow:0 0 0 4px rgba(61,130,183,.08);
+
+    background:#fff;
+
+    box-shadow:0 0 0 4px rgba(77,145,194,.08);
+}
+
+textarea {
+    min-height:145px;
+
+    resize:vertical;
 }
 
 .submit {
     width:100%;
-    padding:15px;
+
+    min-height:54px;
 
     border:0;
     border-radius:13px;
 
-    color:#fff;
-    background:linear-gradient(135deg,var(--navy),var(--blue));
+    color:var(--black);
 
-    font-family:inherit;
-    font-weight:800;
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold),
+            var(--gold-light)
+        );
 
-    cursor:pointer;
+    font-size:12px;
+    font-weight:900;
+
+    transition:.35s;
+}
+
+.submit:hover {
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 35px rgba(203,168,106,.2);
 }
 
 /* TRAINING */
 
 .training {
-    padding:90px 0;
-    background:#eef4f8;
+    padding:110px 0;
+
+    color:#fff;
+
+    background:var(--black);
 }
 
-.training h2 {
+.heading {
     text-align:center;
-    color:var(--navy);
-    font-size:38px;
 }
 
-.training > .container > p {
+.heading small {
+    color:var(--gold-light);
+
+    font-size:10px;
+    font-weight:900;
+}
+
+.heading h2 {
+    margin-top:10px;
+
+    font-size:clamp(35px,4vw,52px);
+}
+
+.heading p {
     max-width:650px;
-    margin:10px auto 40px;
-    text-align:center;
-    color:var(--muted);
+
+    margin:10px auto 50px;
+
+    color:rgba(255,255,255,.45);
+
+    font-size:12px;
 }
 
 .training-grid {
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:15px;
 }
 
 .training-card {
     padding:30px;
-    background:#fff;
+
+    border:1px solid rgba(255,255,255,.07);
     border-radius:22px;
+
+    background:rgba(255,255,255,.035);
+
+    transition:.4s;
 }
 
-.training-card .icon {
-    background:var(--light);
-    color:var(--blue);
+.training-card:hover {
+    transform:translateY(-7px);
+
+    border-color:rgba(203,168,106,.2);
+
+    background:rgba(255,255,255,.05);
+}
+
+.training-number {
+    color:var(--gold);
+
+    font-size:10px;
+    font-weight:900;
 }
 
 .training-card h3 {
     margin-top:20px;
-    color:var(--navy);
+
+    font-size:17px;
 }
 
 .training-card p {
     margin-top:8px;
-    color:var(--muted);
-    font-size:13px;
+
+    color:rgba(255,255,255,.45);
+
+    font-size:11px;
 }
 
 /* FOOTER */
 
 footer {
-    padding:50px 0 20px;
-    background:#041321;
-    color:rgba(255,255,255,.6);
+    padding:60px 0 25px;
+
+    color:rgba(255,255,255,.45);
+
+    background:#02080e;
+
     text-align:center;
 }
 
 footer strong {
     color:#fff;
+
     font-size:22px;
 }
 
-.copy {
-    margin-top:25px;
-    padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.08);
-    font-size:11px;
+footer strong span {
+    color:var(--gold);
 }
+
+.bottom {
+    margin-top:35px;
+    padding-top:20px;
+
+    border-top:1px solid rgba(255,255,255,.07);
+
+    font-size:9px;
+}
+
+/* RESPONSIVE */
 
 @media(max-width:900px) {
 
     .links {
         display:none;
-        position:absolute;
-        top:80px;
-        right:0;
-        left:0;
-        padding:20px;
+
+        position:fixed;
+
+        top:86px;
+        right:4%;
+        left:4%;
+
+        padding:25px;
+
         flex-direction:column;
-        background:#fff;
-        border-radius:18px;
-        box-shadow:0 20px 50px rgba(7,26,45,.1);
+
+        border-radius:20px;
+
+        background:#030b13;
     }
 
-    .links.active {
+    .links.open {
         display:flex;
-    }
-
-    .menu {
-        display:block;
     }
 
     .nav-btn {
         display:none;
     }
 
-    .contact {
+    .menu {
+        display:block;
+    }
+
+    .contact-grid {
         grid-template-columns:1fr;
     }
 
@@ -361,15 +607,32 @@ footer strong {
 
 @media(max-width:600px) {
 
-    .training-grid {
-        grid-template-columns:1fr;
+    .hero {
+        padding-top:145px;
+    }
+
+    .hero h1 {
+        font-size:45px;
+    }
+
+    .contact-section,
+    .training {
+        padding:80px 0;
     }
 
     .form,
     .info {
-        padding:25px;
+        padding:27px;
     }
 
+    .form-row {
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .training-grid {
+        grid-template-columns:1fr;
+    }
 }
 
 </style>
@@ -378,87 +641,135 @@ footer strong {
 
 <body>
 
-<nav>
+<nav class="navbar">
 
 <div class="nav">
 
-<a href="index.html" class="logo">
+<a href="index.html" class="brand">
+<div class="brand-mark">AB</div>
 أحمد <span>بن بصري</span>
 </a>
 
 <ul class="links" id="links">
+
 <li><a href="index.html">الرئيسية</a></li>
 <li><a href="courses.html">دوراتنا</a></li>
 <li><a href="story.html">قصتي</a></li>
-<li><a href="contact.html">تواصل الآن</a></li>
+<li><a href="contact.html" class="active">تواصل الآن</a></li>
+
 </ul>
 
-<a href="contact.html" class="nav-btn">تواصل الآن</a>
+<a href="contact.html" class="nav-btn">
+ابدأ الآن ↗
+</a>
 
-<button class="menu" onclick="toggleMenu()">☰</button>
+<button class="menu" id="menu">☰</button>
 
 </div>
 
 </nav>
 
-<section class="hero">
+<header class="hero">
 
 <div class="container">
 
+<small>LET'S WORK TOGETHER</small>
+
 <h1>
-لنبدأ
-<span>رحلتك الآن</span>
+لنصنع
+<span>الخطوة القادمة.</span>
 </h1>
 
 <p>
-هل تريد تطوير مهاراتك في الذكاء الاصطناعي أو اللغة الإنجليزية؟
-أو تريد تدريب فريقك ومؤسستك؟
+سواء كنت تريد تطوير مهاراتك الشخصية أو تدريب فريقك،
+ابدأ المحادثة الآن.
 </p>
 
 </div>
 
-</section>
+</header>
 
-<section>
+<section class="contact-section">
 
-<div class="container contact">
+<div class="container contact-grid">
+
+<!-- INFO -->
 
 <div class="info">
 
-<h2>كيف يمكنني مساعدتك؟</h2>
+<div class="info-label">
+WHAT I OFFER
+</div>
+
+<h2>
+كيف يمكنني مساعدتك؟
+</h2>
 
 <p>
-أقدم برامج تدريبية للأفراد والمؤسسات
+برامج تدريبية عملية للأفراد والمؤسسات
 في الذكاء الاصطناعي واللغة الإنجليزية.
 </p>
 
-<div class="item">
-<div class="icon">AI</div>
+<div class="info-item">
+
+<div class="info-icon">AI</div>
+
 <div>
 <h3>الذكاء الاصطناعي</h3>
-<p>تدريب عملي على أدوات الذكاء الاصطناعي.</p>
-</div>
+
+<p>
+تدريب عملي على أدوات الذكاء الاصطناعي
+واستخداماتها اليومية والتعليمية.
+</p>
 </div>
 
-<div class="item">
-<div class="icon">EN</div>
+</div>
+
+<div class="info-item">
+
+<div class="info-icon">EN</div>
+
 <div>
 <h3>اللغة الإنجليزية</h3>
-<p>برامج اللغة والاستعداد لاختبار TOEFL.</p>
-</div>
+
+<p>
+تعلم اللغة والاستعداد لاختبارات اللغة
+مثل TOEFL.
+</p>
 </div>
 
-<div class="item">
-<div class="icon">🏢</div>
+</div>
+
+<div class="info-item">
+
+<div class="info-icon">ORG</div>
+
 <div>
 <h3>تدريب المؤسسات</h3>
-<p>برامج مخصصة للشركات والمؤسسات.</p>
-</div>
+
+<p>
+برامج تدريبية مخصصة للشركات
+والفرق والمؤسسات التعليمية.
+</p>
 </div>
 
 </div>
 
-<form class="form" onsubmit="sendForm(event)">
+</div>
+
+<!-- FORM -->
+
+<form class="form" id="contactForm">
+
+<div class="form-title">
+ابدأ المحادثة
+</div>
+
+<div class="form-subtitle">
+أرسل تفاصيل طلبك وسنتعرف على احتياجك.
+</div>
+
+<div class="form-row">
 
 <div class="group">
 
@@ -466,7 +777,7 @@ footer strong {
 
 <input
 type="text"
-placeholder="اكتب اسمك"
+placeholder="اسمك الكامل"
 required
 >
 
@@ -484,6 +795,8 @@ required
 
 </div>
 
+</div>
+
 <div class="group">
 
 <label>نوع التدريب</label>
@@ -491,28 +804,32 @@ required
 <select required>
 
 <option value="">اختر نوع التدريب</option>
+
 <option>الذكاء الاصطناعي</option>
+
 <option>اللغة الإنجليزية</option>
+
 <option>TOEFL</option>
+
 <option>تدريب مؤسسة أو شركة</option>
 
 </select>
 
 </div>
 
-<div class="group">
+<div class="group full">
 
 <label>رسالتك</label>
 
 <textarea
-placeholder="اكتب رسالتك هنا..."
+placeholder="أخبرني عن احتياجك..."
 required
 ></textarea>
 
 </div>
 
-<button class="submit">
-إرسال الطلب
+<button type="submit" class="submit">
+إرسال الطلب ↗
 </button>
 
 </form>
@@ -525,89 +842,121 @@ required
 
 <div class="container">
 
-<h2>تدريب المؤسسات والشركات</h2>
+<div class="heading">
+
+<small>FOR ORGANIZATIONS</small>
+
+<h2>
+تدريب مصمم لمؤسستك.
+</h2>
 
 <p>
-برامج تدريبية مصممة حسب احتياجات المؤسسات
-والفرق التعليمية والمهنية.
+برامج تدريبية يمكن تخصيصها حسب طبيعة فريقك واحتياجات مؤسستك،
+حضوريًا داخل اليمن أو عبر الإنترنت.
 </p>
+
+</div>
 
 <div class="training-grid">
 
 <div class="training-card">
 
-<div class="icon">01</div>
+<div class="training-number">
+01
+</div>
 
-<h3>محتوى مخصص</h3>
+<h3>
+محتوى مخصص
+</h3>
 
 <p>
-تصميم المحتوى التدريبي بما يتناسب مع احتياجات
-المؤسسة والفريق.
+تصميم محتوى تدريبي يناسب مستوى الفريق
+وأهداف المؤسسة.
 </p>
 
 </div>
 
 <div class="training-card">
 
-<div class="icon">02</div>
+<div class="training-number">
+02
+</div>
 
-<h3>حضوري أو عن بعد</h3>
+<h3>
+حضوري أو Online
+</h3>
 
 <p>
-إمكانية تنفيذ التدريب حضوريًا داخل اليمن
-أو عبر الإنترنت من أي مكان.
+إمكانية تنفيذ التدريب حضوريًا أو عبر الإنترنت
+من أي مكان.
 </p>
 
 </div>
 
 <div class="training-card">
 
-<div class="icon">03</div>
+<div class="training-number">
+03
+</div>
 
-<h3>دعم بعد التدريب</h3>
+<h3>
+خبرة تدريبية
+</h3>
 
 <p>
-متابعة الأداء وتقديم الدعم والمساعدة
-بعد انتهاء البرنامج التدريبي.
+خبرة في تدريب موظفي المؤسسات والجامعات
+والفرق التعليمية.
 </p>
 
 </div>
 
 <div class="training-card">
 
-<div class="icon">04</div>
+<div class="training-number">
+04
+</div>
 
-<h3>الذكاء الاصطناعي في التعليم</h3>
+<h3>
+الذكاء الاصطناعي في التعليم
+</h3>
 
 <p>
-تصميم الدروس والمحتوى وتصحيح الواجبات
-وتوفير وقت المعلمين.
+تصميم الدروس وتصحيح الواجبات وصناعة
+المحتوى التعليمي باستخدام AI.
 </p>
 
 </div>
 
 <div class="training-card">
 
-<div class="icon">05</div>
+<div class="training-number">
+05
+</div>
 
-<h3>المحتوى التعليمي</h3>
+<h3>
+توفير وقت الفريق
+</h3>
 
 <p>
-استخدام أدوات الذكاء الاصطناعي لصناعة
-محتوى تعليمي أكثر فاعلية.
+توظيف أدوات الذكاء الاصطناعي لأتمتة
+المهام المتكررة وزيادة الإنتاجية.
 </p>
 
 </div>
 
 <div class="training-card">
 
-<div class="icon">06</div>
+<div class="training-number">
+06
+</div>
 
-<h3>التطوير المستمر</h3>
+<h3>
+متابعة بعد التدريب
+</h3>
 
 <p>
-مساعدة الفرق على مواكبة الأدوات والتقنيات
-الحديثة في الذكاء الاصطناعي.
+دعم وتقييم الأداء بعد انتهاء البرنامج
+التدريبي.
 </p>
 
 </div>
@@ -620,11 +969,11 @@ required
 
 <footer>
 
-<strong>أحمد بن بصري</strong>
+<strong>
+أحمد <span>بن بصري</span>
+</strong>
 
-<p>مدرب الذكاء الاصطناعي واللغة الإنجليزية</p>
-
-<div class="copy">
+<div class="bottom">
 © 2026 أحمد بن بصري — جميع الحقوق محفوظة
 </div>
 
@@ -632,14 +981,25 @@ required
 
 <script>
 
-function toggleMenu(){
-    document.getElementById("links").classList.toggle("active");
-}
+const menu = document.getElementById("menu");
+const links = document.getElementById("links");
 
-function sendForm(e){
+menu.onclick = () => {
+    links.classList.toggle("open");
+};
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+
     e.preventDefault();
-    alert("تم استلام طلبك بنجاح.");
-}
+
+    const button = this.querySelector(".submit");
+
+    button.innerText = "تم إرسال الطلب ✓";
+
+    button.style.background = "#0b6b4f";
+    button.style.color = "#fff";
+
+});
 
 </script>
 
