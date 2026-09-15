@@ -9,18 +9,19 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 :root {
-    --navy:#071a2d;
-    --blue:#3d82b7;
-    --light:#dcecf7;
-    --gold:#e8c69a;
-    --bg:#f7f9fb;
-    --text:#12263a;
-    --muted:#718294;
+    --black:#030b13;
+    --navy:#061827;
+    --blue:#4d91c2;
+    --gold:#cba86a;
+    --gold-light:#ead5a7;
+    --cream:#f4f0e8;
+    --muted:#778896;
 }
 
 * {
@@ -29,10 +30,14 @@
     box-sizing:border-box;
 }
 
+html {
+    scroll-behavior:smooth;
+}
+
 body {
     font-family:"Cairo",sans-serif;
-    background:var(--bg);
-    color:var(--text);
+    background:var(--cream);
+    color:#132b3e;
     line-height:1.9;
 }
 
@@ -42,29 +47,32 @@ a {
 }
 
 .container {
-    width:min(1100px,92%);
+    width:min(1100px,90%);
     margin:auto;
 }
 
 /* NAV */
 
-nav {
+.navbar {
     position:fixed;
-    top:18px;
+    top:20px;
     right:50%;
     transform:translateX(50%);
-    width:min(1180px,92%);
+
+    width:min(1240px,92%);
+    height:76px;
+
     z-index:1000;
 
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:22px;
 
-    border-radius:20px;
-    box-shadow:0 15px 40px rgba(7,26,45,.08);
+    background:rgba(4,17,28,.85);
+    backdrop-filter:blur(24px);
 }
 
 .nav {
-    height:75px;
+    height:100%;
     padding:0 22px;
 
     display:flex;
@@ -72,231 +80,403 @@ nav {
     justify-content:space-between;
 }
 
-.logo {
-    font-size:21px;
+.brand {
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:#fff;
+    font-size:18px;
     font-weight:900;
-    color:var(--navy);
 }
 
-.logo span {
-    color:var(--blue);
+.brand-mark {
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid rgba(203,168,106,.35);
+    border-radius:13px;
+
+    color:var(--gold-light);
+}
+
+.brand span {
+    color:var(--gold-light);
 }
 
 .links {
     display:flex;
-    gap:28px;
+    gap:32px;
     list-style:none;
 }
 
 .links a {
-    font-size:14px;
+    color:rgba(255,255,255,.65);
+
+    font-size:13px;
     font-weight:700;
-    color:#4b6073;
 }
 
-.links a:hover {
-    color:var(--blue);
+.links a:hover,
+.links a.active {
+    color:#fff;
 }
 
 .nav-btn {
-    padding:10px 18px;
+    padding:11px 18px;
+
+    border:1px solid rgba(203,168,106,.4);
     border-radius:12px;
-    color:#fff !important;
-    background:var(--navy);
+
+    color:var(--gold-light);
+
+    font-size:12px;
+    font-weight:800;
 }
 
 .menu {
     display:none;
-    border:0;
-    width:42px;
-    height:42px;
+
+    width:44px;
+    height:44px;
+
+    border:1px solid rgba(255,255,255,.1);
     border-radius:12px;
-    background:var(--light);
+
+    background:rgba(255,255,255,.05);
+    color:#fff;
 }
 
 /* HERO */
 
 .hero {
-    padding:180px 0 100px;
+    padding:190px 0 120px;
+
     text-align:center;
 
+    color:#fff;
+
     background:
-        radial-gradient(circle at 50% 0,rgba(141,196,232,.3),transparent 35%),
-        var(--bg);
+        radial-gradient(
+            circle at 50% 0,
+            rgba(77,145,194,.2),
+            transparent 35%
+        ),
+        var(--black);
+}
+
+.hero small {
+    color:var(--gold-light);
+
+    font-size:11px;
+    font-weight:900;
 }
 
 .hero h1 {
-    color:var(--navy);
-    font-size:clamp(42px,6vw,68px);
+    margin-top:12px;
+
+    font-size:clamp(45px,6vw,75px);
+
+    line-height:1.1;
+
     font-weight:900;
 }
 
 .hero h1 span {
-    color:var(--blue);
+    color:var(--gold-light);
 }
 
 .hero p {
     max-width:700px;
+
+    margin:20px auto 0;
+
+    color:rgba(255,255,255,.52);
+
+    font-size:14px;
+}
+
+/* INTRO */
+
+.intro {
+    padding:100px 0;
+
+    text-align:center;
+}
+
+.intro h2 {
+    color:var(--navy);
+
+    font-size:40px;
+}
+
+.intro p {
+    max-width:750px;
+
     margin:15px auto;
+
     color:var(--muted);
+
+    font-size:14px;
 }
 
-/* STORY */
+/* TIMELINE */
 
-.story {
-    max-width:850px;
-    margin:auto;
+.story-section {
+    padding:100px 0;
+
+    background:#eee9df;
+}
+
+.timeline {
     position:relative;
+
+    max-width:900px;
+
+    margin:auto;
 }
 
-.story::before {
+.timeline::before {
     content:"";
+
     position:absolute;
+
     top:0;
     bottom:0;
+
     right:50%;
-    width:2px;
-    background:linear-gradient(var(--blue),var(--gold),transparent);
+
+    width:1px;
+
+    background:
+        linear-gradient(
+            var(--blue),
+            var(--gold),
+            transparent
+        );
 }
 
-.item {
-    width:50%;
-    padding:0 35px 55px;
+.story-item {
     position:relative;
+
+    width:50%;
+
+    padding:0 45px 70px;
 }
 
-.item:nth-child(even) {
+.story-item:nth-child(even) {
     margin-right:50%;
 }
 
 .dot {
     position:absolute;
+
     top:8px;
-    width:16px;
-    height:16px;
+
+    width:15px;
+    height:15px;
+
+    border:4px solid #eee9df;
     border-radius:50%;
-    background:var(--blue);
-    border:4px solid #fff;
-    box-shadow:0 0 0 4px var(--light);
+
+    background:var(--gold);
+
+    box-shadow:0 0 0 4px rgba(203,168,106,.15);
 }
 
-.item:nth-child(odd) .dot {
-    left:-8px;
+.story-item:nth-child(odd) .dot {
+    left:-7px;
 }
 
-.item:nth-child(even) .dot {
-    right:-8px;
+.story-item:nth-child(even) .dot {
+    right:-7px;
 }
 
-.card {
+.story-card {
+    padding:30px;
+
+    border:1px solid rgba(7,26,45,.08);
+    border-radius:24px;
+
+    background:rgba(255,255,255,.72);
+
+    box-shadow:0 15px 45px rgba(7,26,45,.05);
+
+    transition:.4s;
+}
+
+.story-card:hover {
+    transform:translateY(-5px);
     background:#fff;
-    padding:28px;
-    border-radius:22px;
-    border:1px solid #e4ebef;
-    box-shadow:0 10px 30px rgba(7,26,45,.05);
+    box-shadow:0 25px 60px rgba(7,26,45,.1);
 }
 
-.card span {
+.story-number {
     color:var(--blue);
-    font-size:12px;
+
+    font-size:10px;
     font-weight:900;
+
+    letter-spacing:2px;
 }
 
-.card h2 {
+.story-card h3 {
+    margin-top:6px;
+
     color:var(--navy);
-    margin-top:5px;
+
     font-size:21px;
 }
 
-.card p {
+.story-card p {
     margin-top:10px;
+
     color:var(--muted);
-    font-size:14px;
+
+    font-size:13px;
 }
 
 /* VISION */
 
-.vision {
-    margin-top:40px;
-    padding:60px;
-    border-radius:30px;
-    background:var(--navy);
+.vision-section {
+    padding:110px 0;
+
     color:#fff;
+
+    background:var(--black);
+}
+
+.vision {
+    max-width:900px;
+
+    margin:auto;
+
     text-align:center;
 }
 
+.vision small {
+    color:var(--gold-light);
+
+    font-size:10px;
+    font-weight:900;
+}
+
 .vision h2 {
-    font-size:35px;
+    margin-top:12px;
+
+    font-size:clamp(35px,5vw,60px);
+
+    line-height:1.25;
 }
 
 .vision p {
     max-width:700px;
-    margin:15px auto 0;
-    color:rgba(255,255,255,.65);
+
+    margin:20px auto 0;
+
+    color:rgba(255,255,255,.5);
+
+    font-size:13px;
 }
 
+/* FOOTER */
+
 footer {
-    margin-top:100px;
-    padding:50px 0 20px;
-    background:#041321;
-    color:rgba(255,255,255,.6);
+    padding:60px 0 25px;
+
+    color:rgba(255,255,255,.45);
+
+    background:#02080e;
+
     text-align:center;
 }
 
 footer strong {
     color:#fff;
+
     font-size:22px;
 }
 
-.copy {
-    margin-top:25px;
-    padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.08);
-    font-size:11px;
+footer span {
+    color:var(--gold);
 }
 
-@media(max-width:900px) {
+.bottom {
+    margin-top:35px;
+    padding-top:20px;
+
+    border-top:1px solid rgba(255,255,255,.07);
+
+    font-size:9px;
+}
+
+/* ANIMATION */
+
+.reveal {
+    opacity:0;
+    transform:translateY(35px);
+    transition:.8s;
+}
+
+.reveal.visible {
+    opacity:1;
+    transform:none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px) {
 
     .links {
         display:none;
-        position:absolute;
-        top:80px;
-        right:0;
-        left:0;
-        padding:20px;
+
+        position:fixed;
+
+        top:86px;
+        right:4%;
+        left:4%;
+
+        padding:25px;
+
         flex-direction:column;
-        background:#fff;
-        border-radius:18px;
-        box-shadow:0 20px 50px rgba(7,26,45,.1);
+
+        border-radius:20px;
+
+        background:#030b13;
     }
 
-    .links.active {
+    .links.open {
         display:flex;
-    }
-
-    .menu {
-        display:block;
     }
 
     .nav-btn {
         display:none;
     }
 
-    .story::before {
+    .menu {
+        display:block;
+    }
+
+    .timeline::before {
         right:8px;
     }
 
-    .item,
-    .item:nth-child(even) {
+    .story-item,
+    .story-item:nth-child(even) {
         width:100%;
+
         margin-right:0;
+
         padding-right:35px;
         padding-left:0;
     }
 
-    .item .dot,
-    .item:nth-child(even) .dot,
-    .item:nth-child(odd) .dot {
+    .story-item .dot,
+    .story-item:nth-child(even) .dot,
+    .story-item:nth-child(odd) .dot {
         right:1px;
         left:auto;
     }
@@ -304,14 +484,23 @@ footer strong {
 
 @media(max-width:600px) {
 
-    .vision {
-        padding:35px 20px;
+    .hero {
+        padding-top:145px;
     }
 
-    .vision h2 {
-        font-size:28px;
+    .hero h1 {
+        font-size:45px;
     }
 
+    .intro,
+    .story-section,
+    .vision-section {
+        padding:80px 0;
+    }
+
+    .story-card {
+        padding:23px;
+    }
 }
 
 </style>
@@ -319,147 +508,173 @@ footer strong {
 
 <body>
 
-<nav>
+<nav class="navbar">
 
 <div class="nav">
 
-<a href="index.html" class="logo">
+<a href="index.html" class="brand">
+<div class="brand-mark">AB</div>
 أحمد <span>بن بصري</span>
 </a>
 
 <ul class="links" id="links">
+
 <li><a href="index.html">الرئيسية</a></li>
 <li><a href="courses.html">دوراتنا</a></li>
-<li><a href="story.html">قصتي</a></li>
+<li><a href="story.html" class="active">قصتي</a></li>
 <li><a href="contact.html">تواصل الآن</a></li>
+
 </ul>
 
-<a href="contact.html" class="nav-btn">تواصل الآن</a>
+<a href="contact.html" class="nav-btn">
+تواصل الآن ↗
+</a>
 
-<button class="menu" onclick="toggleMenu()">☰</button>
+<button class="menu" id="menu">☰</button>
 
 </div>
 
 </nav>
 
-<section class="hero">
+<header class="hero">
 
 <div class="container">
 
+<small>THE STORY BEHIND THE JOURNEY</small>
+
 <h1>
-قصتي من
-<span>البداية إلى التأثير</span>
+من طالب يبحث عن فرصة...
+<br>
+<span>إلى شخص يصنع الفرص.</span>
 </h1>
 
 <p>
-رحلة بدأت من حضرموت، مرورًا بتعلم الإنجليزية والمنح الدراسية،
-ووصولًا إلى التدريب وصناعة المحتوى في الذكاء الاصطناعي.
+رحلة بدأت من حضرموت، ومرت باللغة الإنجليزية والمنح الدراسية
+وصناعة المحتوى، حتى وصلت إلى التدريب في الذكاء الاصطناعي.
+</p>
+
+</div>
+
+</header>
+
+<section class="intro">
+
+<div class="container reveal">
+
+<h2>
+كل رحلة عظيمة تبدأ بسؤال.
+</h2>
+
+<p>
+لم تكن البداية مشروعًا كبيرًا أو فريقًا ضخمًا.
+كانت مجرد رغبة في التعلم، وإصرار على الوصول،
+ثم رغبة في مشاركة ما تعلمته مع الآخرين.
 </p>
 
 </div>
 
 </section>
 
-<section>
+<section class="story-section">
 
 <div class="container">
 
-<div class="story">
+<div class="timeline">
 
-<div class="item">
+<div class="story-item reveal">
 
 <div class="dot"></div>
 
-<div class="card">
+<div class="story-card">
 
-<span>البداية</span>
+<div class="story-number">01 / BEGINNING</div>
 
-<h2>من حضرموت</h2>
+<h3>البداية من حضرموت</h3>
 
 <p>
 نشأت في حضرموت، ودرست لمدة 12 عامًا في مدارس دار المصطفى
 ومدرسة سيئون النموذجية الثانوية.
-كنت أؤمن أن التعليم يجب ألا يقتصر على الحفظ،
-بل يجب أن يساعد الإنسان على اكتشاف قدراته وتطوير عقله.
+ومنذ البداية كنت أؤمن بأن التعليم يجب أن يتجاوز الحفظ
+إلى اكتشاف المواهب وتطوير العقول.
 </p>
 
 </div>
 
 </div>
 
-<div class="item">
+<div class="story-item reveal">
 
 <div class="dot"></div>
 
-<div class="card">
+<div class="story-card">
 
-<span>اللغة الإنجليزية</span>
+<div class="story-number">02 / ENGLISH</div>
 
-<h2>شهران غيّرا الكثير</h2>
+<h3>الإنجليزية في شهرين</h3>
 
 <p>
-بدأت رحلة مكثفة مع اللغة الإنجليزية، وكنت أتعلم قرابة
-6 ساعات يوميًا باستخدام YouTube والمواقع التعليمية
-وقنوات المحادثة، مع التركيز على المهارات الأربع.
+بدأت تعلم الإنجليزية بشكل مكثف، وكنت أخصص قرابة ست ساعات
+يوميًا للتعلم باستخدام YouTube والمواقع التعليمية وقنوات المحادثة،
+مع التركيز على المهارات الأربع.
 </p>
 
 </div>
 
 </div>
 
-<div class="item">
+<div class="story-item reveal">
 
 <div class="dot"></div>
 
-<div class="card">
+<div class="story-card">
 
-<span>TOEFL</span>
+<div class="story-number">03 / TOEFL</div>
 
-<h2>من 3/30 إلى فهم الاختبار</h2>
+<h3>من 3/30 إلى فهم اللعبة</h3>
 
 <p>
-كانت أول نتيجة تدريبية لي في قسم القراءة في التوفل
-3 من 30. بدل أن أتوقف، بدأت بدراسة استراتيجيات الاختبار
-وطريقة التعامل مع الأسئلة والنصوص.
+كانت أول نتيجة تدريبية لي في قسم القراءة في TOEFL
+3 من 30. بدل الاستسلام، بدأت بدراسة الاختبار نفسه:
+طريقة الأسئلة، ترتيبها، والاستراتيجيات التي تساعد على التعامل معها.
 </p>
 
 </div>
 
 </div>
 
-<div class="item">
+<div class="story-item reveal">
 
 <div class="dot"></div>
 
-<div class="card">
+<div class="story-card">
 
-<span>المنح الدراسية</span>
+<div class="story-number">04 / SCHOLARSHIPS</div>
 
-<h2>7 منح ممولة بالكامل</h2>
+<h3>7 منح دراسية ممولة بالكامل</h3>
 
 <p>
-تم قبولي في 7 منح دراسية ممولة بالكامل،
-لكنني لم أسافر لأسباب شخصية. وكانت هذه التجربة
-من أهم المحطات التي غيرت نظرتي للتعلم والفرص.
+تم قبولي في سبع منح دراسية ممولة بالكامل،
+لكنني لم أسافر لأسباب شخصية.
+هذه التجربة جعلتني أرى حجم الفرص التي يمكن أن يفتحها التعلم.
 </p>
 
 </div>
 
 </div>
 
-<div class="item">
+<div class="story-item reveal">
 
 <div class="dot"></div>
 
-<div class="card">
+<div class="story-card">
 
-<span>صناعة المحتوى</span>
+<div class="story-number">05 / CONTENT</div>
 
-<h2>البداية من غرفة صغيرة</h2>
+<h3>الميكروفون الذي بدأ منه كل شيء</h3>
 
 <p>
-بعد اكتشافي مجال التدريس عبر الإنترنت، بدأت صناعة المحتوى.
-اشتريت ميكروفونًا بسعر 0.50 دولار، وجهزت الغرفة،
+بعد اكتشاف مجال التدريس عبر الإنترنت، بدأت صناعة المحتوى.
+اشتريت ميكروفونًا بسعر 0.50 دولار، وجهزت غرفتي،
 وساعدني ابن عمي حسين في البداية.
 </p>
 
@@ -467,60 +682,60 @@ footer strong {
 
 </div>
 
-<div class="item">
+<div class="story-item reveal">
 
 <div class="dot"></div>
 
-<div class="card">
+<div class="story-card">
 
-<span>الذكاء الاصطناعي</span>
+<div class="story-number">06 / AI</div>
 
-<h2>مجال جديد تمامًا</h2>
+<h3>الانتقال إلى الذكاء الاصطناعي</h3>
 
 <p>
-بعد تجربة التدريب وTOT بدأت رحلة متخصصة في الذكاء الاصطناعي،
-وقضيت أشهرًا في التعلم وتجربة عشرات البرامج والمنصات والأدوات.
+بعد تجربة التدريب وTOT بدأت رحلة جديدة في الذكاء الاصطناعي.
+قضيت أشهرًا في التعلم وتجربة عشرات البرامج والمنصات والأدوات
+حتى استطعت تحويل ما تعلمته إلى محتوى ودورات عملية.
 </p>
 
 </div>
 
 </div>
 
-<div class="item">
+<div class="story-item reveal">
 
 <div class="dot"></div>
 
-<div class="card">
+<div class="story-card">
 
-<span>التدريب</span>
+<div class="story-number">07 / IMPACT</div>
 
-<h2>من التعلم إلى تعليم الآخرين</h2>
+<h3>من التعلم إلى تعليم الآلاف</h3>
 
 <p>
-قدمت دورات في الذكاء الاصطناعي واللغة الإنجليزية،
-ووصلت دورات الذكاء الاصطناعي إلى آلاف المتعلمين
-من مختلف أنحاء الوطن العربي.
+قدمت دورات في اللغة الإنجليزية والذكاء الاصطناعي،
+ووصلت الدورات إلى آلاف المتعلمين من مختلف أنحاء الوطن العربي.
+كما كتبت دليلًا بعنوان «أهم 30 أمر ChatGPT للاستخدام اليومي».
 </p>
 
 </div>
 
 </div>
 
-<div class="item">
+<div class="story-item reveal">
 
 <div class="dot"></div>
 
-<div class="card">
+<div class="story-card">
 
-<span>المستقبل</span>
+<div class="story-number">08 / FUTURE</div>
 
-<h2>التأثير قبل الشهرة</h2>
+<h3>ما الذي أريده للمستقبل؟</h3>
 
 <p>
-هدفي ليس الشهرة بقدر ما هو صناعة أثر حقيقي،
-وأن أساهم في تطوير الشباب وصناعة محتوى هادف،
-والمساهمة مستقبلًا في إنشاء مركز لصناعة المحتوى
-وتدريب الشباب في حضرموت.
+أن أكون صانع محتوى هادفًا ومؤثرًا من حضرموت،
+وأن أساهم في تطوير الشباب، وأن أعمل مستقبلًا
+على إنشاء مركز لصناعة المحتوى وتدريب الشباب.
 </p>
 
 </div>
@@ -529,14 +744,27 @@ footer strong {
 
 </div>
 
-<div class="vision">
+</div>
 
-<h2>رؤيتي</h2>
+</section>
+
+<section class="vision-section">
+
+<div class="container">
+
+<div class="vision reveal">
+
+<small>MY VISION</small>
+
+<h2>
+التأثير قبل الشهرة.
+</h2>
 
 <p>
-أن أساعد الشباب على اكتساب المهارات التي تمنحهم
-الاستقلالية المهنية وتحسن جودة حياتهم،
-وأن أجعل التعلم أكثر عملية ووضوحًا وتأثيرًا.
+لا أريد أن يكون هدفي مجرد الظهور.
+أريد أن يكون لكل محتوى ودورة وتدريب قيمة حقيقية،
+وأن أساعد الشباب على اكتساب مهارات تمنحهم استقلالية
+مهنية وتحسن جودة حياتهم.
 </p>
 
 </div>
@@ -547,20 +775,41 @@ footer strong {
 
 <footer>
 
-<strong>أحمد بن بصري</strong>
+<strong>
+أحمد <span>بن بصري</span>
+</strong>
 
-<p>مدرب الذكاء الاصطناعي واللغة الإنجليزية</p>
-
-<div class="copy">
+<div class="bottom">
 © 2026 أحمد بن بصري — جميع الحقوق محفوظة
 </div>
 
 </footer>
 
 <script>
-function toggleMenu(){
-    document.getElementById("links").classList.toggle("active");
-}
+
+const menu = document.getElementById("menu");
+const links = document.getElementById("links");
+
+menu.onclick = () => {
+    links.classList.toggle("open");
+};
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting) {
+            entry.target.classList.add("visible");
+        }
+
+    });
+
+},{threshold:.1});
+
+document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+});
+
 </script>
 
 </body>
