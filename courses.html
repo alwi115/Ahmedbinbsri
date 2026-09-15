@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>دورات أحمد بن بصري</title>
+<title>الدورات | أحمد بن بصري</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 :root {
-    --navy:#071a2d;
-    --blue:#3d82b7;
-    --light:#dcecf7;
-    --gold:#e8c69a;
+    --black:#030b13;
+    --navy:#061827;
+    --navy2:#0a2439;
+
+    --blue:#4d91c2;
+    --gold:#cba86a;
+    --gold-light:#ead5a7;
+
+    --cream:#f4f0e8;
     --white:#fff;
-    --bg:#f7f9fb;
-    --text:#12263a;
-    --muted:#718294;
+    --muted:#778896;
 }
 
 * {
@@ -35,8 +40,8 @@ html {
 
 body {
     font-family:"Cairo",sans-serif;
-    background:var(--bg);
-    color:var(--text);
+    background:var(--cream);
+    color:#132b3e;
     line-height:1.8;
 }
 
@@ -46,29 +51,34 @@ a {
 }
 
 .container {
-    width:min(1180px,92%);
+    width:min(1240px,90%);
     margin:auto;
 }
 
 /* NAV */
 
-nav {
+.navbar {
     position:fixed;
-    top:18px;
+    top:20px;
     right:50%;
     transform:translateX(50%);
-    width:min(1180px,92%);
+
+    width:min(1240px,92%);
+    height:76px;
+
     z-index:1000;
 
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:22px;
 
-    border-radius:20px;
-    box-shadow:0 15px 40px rgba(7,26,45,.08);
+    background:rgba(4,17,28,.82);
+    backdrop-filter:blur(24px);
+
+    transition:.4s;
 }
 
-.nav {
-    height:75px;
+.nav-inner {
+    height:100%;
     padding:0 22px;
 
     display:flex;
@@ -76,243 +86,513 @@ nav {
     justify-content:space-between;
 }
 
-.logo {
-    font-size:21px;
-    font-weight:900;
-    color:var(--navy);
-}
-
-.logo span {
-    color:var(--blue);
-}
-
-.links {
+.brand {
     display:flex;
-    gap:28px;
+    align-items:center;
+    gap:10px;
+
+    color:#fff;
+    font-size:18px;
+    font-weight:900;
+}
+
+.brand-mark {
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid rgba(203,168,106,.35);
+    border-radius:13px;
+
+    color:var(--gold-light);
+}
+
+.brand span {
+    color:var(--gold-light);
+}
+
+.nav-links {
+    display:flex;
+    gap:32px;
     list-style:none;
 }
 
-.links a {
-    color:#4b6073;
-    font-size:14px;
+.nav-links a {
+    color:rgba(255,255,255,.65);
+    font-size:13px;
     font-weight:700;
+    transition:.3s;
 }
 
-.links a:hover {
-    color:var(--blue);
+.nav-links a:hover,
+.nav-links a.active {
+    color:#fff;
 }
 
-.nav-btn {
-    padding:10px 18px;
-    color:#fff !important;
-    background:var(--navy);
+.nav-cta {
+    padding:11px 18px;
+
+    border:1px solid rgba(203,168,106,.4);
     border-radius:12px;
+
+    color:var(--gold-light);
+
+    font-size:12px;
+    font-weight:800;
 }
 
 .menu {
     display:none;
-    width:42px;
-    height:42px;
-    border:0;
+
+    width:44px;
+    height:44px;
+
+    border:1px solid rgba(255,255,255,.1);
     border-radius:12px;
-    background:var(--light);
+
+    background:rgba(255,255,255,.05);
+    color:#fff;
 }
 
 /* HERO */
 
 .hero {
-    padding:180px 0 90px;
+    padding:190px 0 110px;
+
     text-align:center;
 
+    color:#fff;
+
     background:
-        radial-gradient(circle at 50% 0,rgba(141,196,232,.3),transparent 35%),
-        var(--bg);
+        radial-gradient(
+            circle at 50% 0,
+            rgba(77,145,194,.22),
+            transparent 35%
+        ),
+        var(--black);
+}
+
+.eyebrow {
+    color:var(--gold-light);
+
+    font-size:11px;
+    font-weight:900;
 }
 
 .hero h1 {
-    color:var(--navy);
-    font-size:clamp(40px,6vw,65px);
+    margin-top:15px;
+
+    font-size:clamp(44px,6vw,75px);
+
+    line-height:1.15;
+
     font-weight:900;
 }
 
 .hero h1 span {
-    color:var(--blue);
+    color:var(--gold-light);
 }
 
 .hero p {
     max-width:650px;
-    margin:15px auto;
-    color:var(--muted);
+
+    margin:18px auto 0;
+
+    color:rgba(255,255,255,.52);
+
+    font-size:14px;
 }
 
 /* COURSES */
 
-section {
-    padding:80px 0;
+.courses-section {
+    padding:120px 0;
+
+    background:var(--cream);
 }
 
-.grid {
+.section-heading {
+    margin-bottom:55px;
+}
+
+.section-heading span {
+    color:var(--blue);
+
+    font-size:11px;
+    font-weight:900;
+}
+
+.section-heading h2 {
+    margin-top:10px;
+
+    color:var(--navy);
+
+    font-size:45px;
+    font-weight:900;
+}
+
+.section-heading p {
+    margin-top:10px;
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+.course-grid {
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:22px;
+    gap:20px;
 }
 
 .card {
+    position:relative;
+
+    min-height:360px;
+
     padding:32px;
-    background:#fff;
-    border-radius:24px;
-    border:1px solid #e5ebef;
-    transition:.35s;
+
+    display:flex;
+    flex-direction:column;
+
+    border:1px solid rgba(7,26,45,.08);
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.95),
+            rgba(245,241,233,.9)
+        );
+
+    overflow:hidden;
+
+    transition:.45s cubic-bezier(.2,.8,.2,1);
 }
 
 .card:hover {
-    transform:translateY(-8px);
-    box-shadow:0 20px 50px rgba(7,26,45,.1);
+    transform:translateY(-10px);
+    box-shadow:0 30px 70px rgba(7,26,45,.12);
 }
 
-.icon {
-    width:55px;
-    height:55px;
+.card::after {
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+    height:160px;
+
+    top:-70px;
+    left:-70px;
+
+    border-radius:50%;
+
+    background:rgba(77,145,194,.08);
+}
+
+.card-number {
+    position:relative;
+    z-index:2;
+
+    color:var(--blue);
+
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.card-icon {
+    position:relative;
+    z-index:2;
+
+    width:50px;
+    height:50px;
+
+    margin-top:25px;
 
     display:grid;
     place-items:center;
 
+    border:1px solid rgba(203,168,106,.35);
     border-radius:15px;
 
-    background:var(--light);
-    color:var(--blue);
+    color:var(--gold);
+    background:rgba(203,168,106,.08);
 
+    font-size:11px;
     font-weight:900;
 }
 
-.card h2 {
-    margin-top:22px;
+.card h3 {
+    position:relative;
+    z-index:2;
+
+    margin-top:20px;
+
     color:var(--navy);
-    font-size:20px;
+
+    font-size:19px;
+    line-height:1.7;
 }
 
 .card p {
-    margin-top:10px;
+    position:relative;
+    z-index:2;
+
+    margin-top:9px;
+
     color:var(--muted);
-    font-size:13px;
+
+    font-size:12px;
+}
+
+.card-footer {
+    position:relative;
+    z-index:2;
+
+    margin-top:auto;
+    padding-top:25px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .students {
-    display:block;
-    margin-top:20px;
     color:var(--blue);
-    font-size:12px;
-    font-weight:800;
+
+    font-size:10px;
+    font-weight:900;
+}
+
+.more {
+    color:var(--navy);
+
+    font-size:11px;
+    font-weight:900;
 }
 
 /* CHALLENGE */
 
 .challenge {
-    margin-top:30px;
-    padding:50px;
+    margin-top:80px;
 
-    border-radius:30px;
+    padding:65px;
 
-    background:var(--navy);
+    border-radius:35px;
+
     color:#fff;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(77,145,194,.2),
+            transparent 30%
+        ),
+        var(--navy);
+
+    box-shadow:0 30px 80px rgba(7,26,45,.18);
+}
+
+.challenge-label {
+    color:var(--gold-light);
+
+    font-size:11px;
+    font-weight:900;
 }
 
 .challenge h2 {
-    font-size:34px;
+    margin-top:10px;
+
+    font-size:42px;
 }
 
-.challenge p {
-    color:rgba(255,255,255,.65);
+.challenge-description {
+    max-width:650px;
+
+    margin-top:10px;
+
+    color:rgba(255,255,255,.5);
+
+    font-size:13px;
 }
 
 .features {
+    margin-top:35px;
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-top:30px;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
 }
 
 .feature {
     padding:18px;
+
+    border:1px solid rgba(255,255,255,.07);
     border-radius:15px;
-    background:rgba(255,255,255,.06);
-    font-size:13px;
+
+    background:rgba(255,255,255,.035);
+
+    color:rgba(255,255,255,.65);
+
+    font-size:11px;
+
+    transition:.3s;
 }
+
+.feature:hover {
+    border-color:rgba(203,168,106,.3);
+    color:var(--gold-light);
+}
+
+/* FOOTER */
 
 footer {
-    padding:50px 0 20px;
-    background:#041321;
-    color:rgba(255,255,255,.6);
-    text-align:center;
+    padding:65px 0 25px;
+
+    color:rgba(255,255,255,.45);
+
+    background:#02080e;
 }
 
-footer strong {
+.footer-grid {
+    display:grid;
+    grid-template-columns:1.4fr .7fr .7fr;
+    gap:50px;
+}
+
+.footer-brand {
     color:#fff;
+
     font-size:22px;
+    font-weight:900;
 }
 
-footer p {
-    font-size:13px;
+.footer-brand span {
+    color:var(--gold);
 }
 
-.copy {
-    margin-top:25px;
-    padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.08);
+.footer-title {
+    color:#fff;
+
+    font-size:12px;
+    font-weight:900;
+}
+
+.footer-links {
+    margin-top:12px;
+
+    display:grid;
+    gap:6px;
+
+    list-style:none;
+
     font-size:11px;
+}
+
+.footer-links a:hover {
+    color:var(--gold);
+}
+
+.bottom {
+    margin-top:50px;
+    padding-top:20px;
+
+    border-top:1px solid rgba(255,255,255,.07);
+
+    text-align:center;
+
+    font-size:9px;
+}
+
+.reveal {
+    opacity:0;
+    transform:translateY(30px);
+    transition:.8s;
+}
+
+.reveal.visible {
+    opacity:1;
+    transform:none;
 }
 
 @media(max-width:900px) {
 
-    .links {
+    .nav-links {
         display:none;
-        position:absolute;
-        top:80px;
-        right:0;
-        left:0;
 
-        padding:20px;
+        position:fixed;
+        top:86px;
+        right:4%;
+        left:4%;
+
+        padding:25px;
 
         flex-direction:column;
 
-        background:#fff;
-        border-radius:18px;
+        border-radius:20px;
 
-        box-shadow:0 20px 50px rgba(7,26,45,.1);
+        background:#030b13;
     }
 
-    .links.active {
+    .nav-links.open {
         display:flex;
+    }
+
+    .nav-cta {
+        display:none;
     }
 
     .menu {
         display:block;
     }
 
-    .nav-btn {
-        display:none;
-    }
-
-    .grid {
+    .course-grid {
         grid-template-columns:repeat(2,1fr);
     }
 
     .features {
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:repeat(2,1fr);
     }
 }
 
 @media(max-width:600px) {
 
-    .grid,
+    .hero {
+        padding-top:145px;
+    }
+
+    .hero h1 {
+        font-size:45px;
+    }
+
+    .courses-section {
+        padding:80px 0;
+    }
+
+    .section-heading h2 {
+        font-size:35px;
+    }
+
+    .course-grid,
     .features {
         grid-template-columns:1fr;
     }
 
     .challenge {
-        padding:30px;
+        padding:35px 22px;
     }
 
+    .challenge h2 {
+        font-size:30px;
+    }
+
+    .footer-grid {
+        grid-template-columns:1fr;
+    }
 }
 
 </style>
@@ -320,139 +600,261 @@ footer p {
 
 <body>
 
-<nav>
-<div class="nav">
+<nav class="navbar">
 
-<a href="index.html" class="logo">
+<div class="nav-inner">
+
+<a href="index.html" class="brand">
+<div class="brand-mark">AB</div>
 أحمد <span>بن بصري</span>
 </a>
 
-<ul class="links" id="links">
+<ul class="nav-links" id="navLinks">
+
 <li><a href="index.html">الرئيسية</a></li>
-<li><a href="courses.html">دوراتنا</a></li>
+<li><a href="courses.html" class="active">دوراتنا</a></li>
 <li><a href="story.html">قصتي</a></li>
 <li><a href="contact.html">تواصل الآن</a></li>
+
 </ul>
 
-<a href="contact.html" class="nav-btn">احجز تدريبًا</a>
+<a href="contact.html" class="nav-cta">
+احجز تدريبًا ↗
+</a>
 
-<button class="menu" onclick="toggleMenu()">☰</button>
+<button class="menu" id="menu">☰</button>
 
 </div>
+
 </nav>
 
-<section class="hero">
+<header class="hero">
 
 <div class="container">
 
+<div class="eyebrow">
+ACADEMY • SKILLS • FUTURE
+</div>
+
 <h1>
-دورات تصنع
-<span>فرقًا حقيقيًا</span>
+تعلم اليوم.
+<span>تقدم غدًا.</span>
 </h1>
 
 <p>
-تعلم الذكاء الاصطناعي واللغة الإنجليزية والمهارات الأكاديمية
-من خلال دورات عملية ومباشرة.
+دورات عملية في الذكاء الاصطناعي واللغة الإنجليزية
+والتميز الأكاديمي، مصممة لتمنحك مهارات قابلة للتطبيق.
 </p>
 
 </div>
 
-</section>
+</header>
 
-<section>
+<main>
+
+<section class="courses-section">
 
 <div class="container">
 
-<div class="grid">
+<div class="section-heading reveal">
 
-<div class="card">
-<div class="icon">AI</div>
-<h2>كيف أستخدم الذكاء الاصطناعي في حياتي اليومية؟</h2>
+<span>FEATURED COURSES</span>
+
+<h2>
+دورات صنعت فرقًا.
+</h2>
+
 <p>
-دليل عملي لاستخدام ChatGPT وأدوات الذكاء الاصطناعي
-في الحياة اليومية والإنتاجية.
+مجموعة من أبرز الدورات والبرامج التدريبية.
 </p>
+
+</div>
+
+<div class="course-grid">
+
+<div class="card reveal">
+
+<div class="card-number">01 / AI</div>
+
+<div class="card-icon">AI</div>
+
+<h3>
+كيف أستخدم الذكاء الاصطناعي في حياتي اليومية؟
+</h3>
+
+<p>
+تعلم استخدام ChatGPT وأدوات الذكاء الاصطناعي
+لرفع الإنتاجية وتسهيل المهام اليومية.
+</p>
+
+<div class="card-footer">
 <span class="students">1,321 طالب</span>
+<span class="more">التفاصيل ↗</span>
 </div>
 
-<div class="card">
-<div class="icon">🎓</div>
-<h2>الذكاء الاصطناعي للتميز الأكاديمي</h2>
+</div>
+
+<div class="card reveal">
+
+<div class="card-number">02 / EDUCATION</div>
+
+<div class="card-icon">EDU</div>
+
+<h3>
+الذكاء الاصطناعي للتميز الأكاديمي
+</h3>
+
 <p>
-تعلم استخدام الذكاء الاصطناعي في العروض التقديمية
-والأبحاث والتعلم التفاعلي.
+استخدم الذكاء الاصطناعي في الأبحاث والعروض
+التقديمية والتعلم التفاعلي.
 </p>
+
+<div class="card-footer">
 <span class="students">3,556 طالب</span>
+<span class="more">التفاصيل ↗</span>
 </div>
 
-<div class="card">
-<div class="icon">EN</div>
-<h2>تحدي الـ30 يوم لاكتساب اللغة الإنجليزية</h2>
+</div>
+
+<div class="card reveal">
+
+<div class="card-number">03 / ENGLISH</div>
+
+<div class="card-icon">EN</div>
+
+<h3>
+تحدي الـ30 يوم لاكتساب اللغة الإنجليزية
+</h3>
+
 <p>
-برنامج مكثف يساعدك على بناء عادة تعلم اللغة
-والتقدم خلال 30 يومًا.
+برنامج مكثف لبناء عادة تعلم الإنجليزية
+والتقدم من خلال التطبيق اليومي.
 </p>
+
+<div class="card-footer">
+<span class="students">30 DAYS</span>
+<span class="more">التفاصيل ↗</span>
 </div>
 
-<div class="card">
-<div class="icon">TOEFL</div>
-<h2>Get 100+ in TOEFL</h2>
+</div>
+
+<div class="card reveal">
+
+<div class="card-number">04 / TOEFL</div>
+
+<div class="card-icon">100+</div>
+
+<h3>
+Get 100+ in TOEFL
+</h3>
+
 <p>
-استعد لاختبار التوفل خلال 30 يومًا
-مع خطة واضحة ومركزة.
+استعد لاختبار TOEFL خلال 30 يومًا
+بخطة مركزة واستراتيجيات واضحة.
 </p>
-<span class="students">23,201 طالب</span>
+
+<div class="card-footer">
+<span class="students">23,201 Students</span>
+<span class="more">التفاصيل ↗</span>
 </div>
 
-<div class="card">
-<div class="icon">AI+</div>
-<h2>DeepSeek R1 & ChatGPT</h2>
+</div>
+
+<div class="card reveal">
+
+<div class="card-number">05 / AI TOOLS</div>
+
+<div class="card-icon">20+</div>
+
+<h3>
+DeepSeek R1 & ChatGPT
+</h3>
+
 <p>
-تعرف على أكثر من 20 أداة للذكاء الاصطناعي
-وطريقة الاستفادة منها.
+اكتشف أكثر من 20 أداة للذكاء الاصطناعي
+وتعلم كيف تستخدمها بذكاء.
 </p>
-<span class="students">8,218 طالب</span>
+
+<div class="card-footer">
+<span class="students">8,218 Students</span>
+<span class="more">التفاصيل ↗</span>
 </div>
 
-<div class="card">
-<div class="icon">5D</div>
-<h2>Transform Your Life in 5 Days</h2>
+</div>
+
+<div class="card reveal">
+
+<div class="card-number">06 / GROWTH</div>
+
+<div class="card-icon">5D</div>
+
+<h3>
+Transform Your Life in 5 Days
+</h3>
+
 <p>
-تحدٍ لتغيير طريقة تفكيرك والعمل على تطوير نفسك.
+تحدٍ مكثف لإعادة النظر في طريقة تفكيرك
+وتطوير حياتك خلال خمسة أيام.
 </p>
-<span class="students">7,726 طالب</span>
+
+<div class="card-footer">
+<span class="students">7,726 Students</span>
+<span class="more">التفاصيل ↗</span>
 </div>
 
-<div class="card">
-<div class="icon">EN</div>
-<h2>Secrets of Learning English</h2>
+</div>
+
+<div class="card reveal">
+
+<div class="card-number">07 / LANGUAGES</div>
+
+<div class="card-icon">EN</div>
+
+<h3>
+Secrets of Learning English
+</h3>
+
 <p>
-استراتيجيات تعلم الإنجليزية واللغات الأخرى
-بطريقة أكثر فاعلية.
+استراتيجيات عملية لتعلم الإنجليزية
+واللغات الأخرى بطريقة أكثر فاعلية.
 </p>
-<span class="students">5,095 طالب</span>
+
+<div class="card-footer">
+<span class="students">5,095 Students</span>
+<span class="more">التفاصيل ↗</span>
 </div>
 
 </div>
 
-<div class="challenge">
+</div>
 
-<h2>تحدي الـ30 يوم لاكتساب اللغة الإنجليزية</h2>
+<!-- CHALLENGE -->
 
-<p>
-برنامج عملي يجمع بين التعلم اليومي والتطبيق والمتابعة.
+<div class="challenge reveal">
+
+<div class="challenge-label">
+THE 30 DAY CHALLENGE
+</div>
+
+<h2>
+تحدي الـ30 يوم لاكتساب اللغة الإنجليزية
+</h2>
+
+<p class="challenge-description">
+برنامج يجمع بين خطة تعلم يومية، الممارسة،
+المتابعة والدعم للوصول إلى تقدم ملموس خلال 30 يومًا.
 </p>
 
 <div class="features">
 
-<div class="feature">📚 My Dictionary</div>
-<div class="feature">🎵 كتاب كلمات أغاني Maher Zain</div>
-<div class="feature">🎥 لقاءات مباشرة عبر Zoom</div>
-<div class="feature">🤝 Challenge Buddy</div>
-<div class="feature">💬 إجابات مباشرة من المدرب</div>
-<div class="feature">📅 خطة تعلم يومية كاملة</div>
-<div class="feature">🔗 روابط ومصادر تعليمية</div>
-<div class="feature">✨ مفاجآت خلال التحدي</div>
+<div class="feature">My Dictionary</div>
+<div class="feature">Maher Zain Song Words</div>
+<div class="feature">لقاءات مباشرة عبر Zoom</div>
+<div class="feature">Challenge Buddy</div>
+<div class="feature">إجابات مباشرة من المدرب</div>
+<div class="feature">خطة تعلم يومية</div>
+<div class="feature">منهج كامل وروابط مباشرة</div>
+<div class="feature">مفاجآت خلال التحدي</div>
 
 </div>
 
@@ -461,16 +863,43 @@ footer p {
 </div>
 
 </section>
+
+</main>
 
 <footer>
 
 <div class="container">
 
-<strong>أحمد بن بصري</strong>
+<div class="footer-grid">
 
-<p>مدرب الذكاء الاصطناعي واللغة الإنجليزية</p>
+<div>
+<div class="footer-brand">
+أحمد <span>بن بصري</span>
+</div>
+</div>
 
-<div class="copy">
+<div>
+<div class="footer-title">التصفح</div>
+
+<ul class="footer-links">
+<li><a href="index.html">الرئيسية</a></li>
+<li><a href="courses.html">الدورات</a></li>
+<li><a href="story.html">قصتي</a></li>
+</ul>
+</div>
+
+<div>
+<div class="footer-title">تواصل</div>
+
+<ul class="footer-links">
+<li><a href="contact.html">تواصل الآن</a></li>
+<li><a href="contact.html">تدريب المؤسسات</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class="bottom">
 © 2026 أحمد بن بصري — جميع الحقوق محفوظة
 </div>
 
@@ -479,9 +908,30 @@ footer p {
 </footer>
 
 <script>
-function toggleMenu(){
-    document.getElementById("links").classList.toggle("active");
-}
+
+const menu = document.getElementById("menu");
+const links = document.getElementById("navLinks");
+
+menu.onclick = () => {
+    links.classList.toggle("open");
+};
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting) {
+            entry.target.classList.add("visible");
+        }
+
+    });
+
+}, {threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+});
+
 </script>
 
 </body>
